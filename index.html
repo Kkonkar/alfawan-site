@@ -35,6 +35,7 @@
       color: var(--dark-text);
     }
     body.en { direction: ltr; }
+    body.modal-open { overflow: hidden; }
     a { text-decoration: none; color: inherit; }
     button, input, textarea, select { font-family: inherit; }
     img { display: block; max-width: 100%; }
@@ -196,9 +197,27 @@
       cursor: pointer;
       font-size: 16px;
       transition: 0.25s ease;
+      position: relative;
     }
 
     .lang-btn { width: auto; padding: 0 14px; border-radius: 999px; font-weight: 800; }
+
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 5px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(90deg, #ff4da6, #ff7b00);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      border: 2px solid #081029;
+    }
 
     .icon-btn:hover,
     .lang-btn:hover,
@@ -206,13 +225,17 @@
     .secondary-btn:hover,
     .ghost-btn:hover,
     .send-btn:hover,
-    .tab-btn:hover { transform: translateY(-2px); }
+    .tab-btn:hover,
+    .product-action:hover,
+    .modal-close:hover { transform: translateY(-2px); }
 
     .primary-btn,
     .secondary-btn,
     .ghost-btn,
     .send-btn,
-    .tab-btn {
+    .tab-btn,
+    .product-action,
+    .modal-close {
       border: none;
       cursor: pointer;
       transition: 0.25s ease;
@@ -221,7 +244,8 @@
 
     .primary-btn,
     .send-btn,
-    .tab-btn.active {
+    .tab-btn.active,
+    .product-action.primary {
       color: #fff;
       background: linear-gradient(90deg, var(--primary), #6d4cff 52%, var(--primary-2));
       box-shadow: 0 10px 26px rgba(111, 57, 255, 0.28);
@@ -231,7 +255,9 @@
     .secondary-btn,
     .ghost-btn,
     .send-btn,
-    .tab-btn {
+    .tab-btn,
+    .product-action,
+    .modal-close {
       border-radius: 16px;
       padding: 15px 24px;
       font-size: 17px;
@@ -243,7 +269,9 @@
 
     .secondary-btn,
     .ghost-btn,
-    .tab-btn {
+    .tab-btn,
+    .product-action.secondary,
+    .modal-close {
       color: #fff;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.14);
@@ -652,9 +680,13 @@
     .mikrotik-mini,
     .cabling-mini,
     .virtualization-mini,
-    .firewall-mini {
-      position: absolute;
-      inset: 0;
+    .firewall-mini,
+    .router-box,
+    .server-box,
+    .switch-box,
+    .wifi-box {
+      position: relative;
+      inset: auto;
       margin: auto;
     }
 
@@ -663,6 +695,7 @@
       height: 120px;
       display: grid;
       gap: 10px;
+      position: relative;
     }
 
     .server-mini span {
@@ -685,7 +718,8 @@
       opacity: 0.65;
     }
 
-    .switch-mini {
+    .switch-mini,
+    .switch-box {
       width: 150px;
       height: 72px;
       border-radius: 16px;
@@ -694,7 +728,8 @@
       box-shadow: 0 10px 24px rgba(0,0,0,0.24);
     }
 
-    .switch-mini::after {
+    .switch-mini::after,
+    .switch-box::after {
       content: "";
       position: absolute;
       left: 10px;
@@ -706,13 +741,16 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .wifi-mini {
+    .wifi-mini,
+    .wifi-box {
       width: 150px;
       height: 150px;
     }
 
     .wifi-mini::before,
-    .wifi-mini::after {
+    .wifi-mini::after,
+    .wifi-box::before,
+    .wifi-box::after {
       content: "";
       position: absolute;
       border: 5px solid transparent;
@@ -723,9 +761,13 @@
       translate: -50% 0;
     }
 
-    .wifi-mini::before { width: 110px; height: 110px; top: 14px; }
-    .wifi-mini::after { width: 72px; height: 72px; top: 33px; }
-    .wifi-mini span {
+    .wifi-mini::before,
+    .wifi-box::before { width: 110px; height: 110px; top: 14px; }
+    .wifi-mini::after,
+    .wifi-box::after { width: 72px; height: 72px; top: 33px; }
+
+    .wifi-mini span,
+    .wifi-box span {
       position: absolute;
       left: 50%;
       bottom: 24px;
@@ -827,6 +869,55 @@
       font-size: 42px;
     }
 
+    .router-box {
+      width: 160px;
+      height: 64px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #10182d, #0a1020);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.24);
+    }
+
+    .router-box::before,
+    .router-box::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 52px;
+      top: -38px;
+      background: linear-gradient(180deg, #eef3ff, #8092ff);
+      border-radius: 999px;
+    }
+
+    .router-box::before { right: 36px; }
+    .router-box::after { right: 18px; }
+
+    .server-box {
+      width: 130px;
+      height: 130px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .server-box span {
+      border-radius: 14px;
+      background: linear-gradient(180deg, #161f42, #0c1430);
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+
+    .server-box span::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      top: 14px;
+      bottom: 14px;
+      background: repeating-linear-gradient(90deg, rgba(61,149,255,0.8) 0 8px, transparent 8px 18px);
+      border-radius: 10px;
+      opacity: 0.7;
+    }
+
     .card-body { padding: 24px 22px 26px; }
     .card-body h3 {
       margin: 0 0 12px;
@@ -876,6 +967,8 @@
       box-shadow: var(--shadow);
       border: 1px solid rgba(15,23,42,0.05);
       transition: 0.25s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .product-card:hover { transform: translateY(-6px); }
@@ -902,6 +995,7 @@
       font-weight: 800;
       font-size: 14px;
       margin-bottom: 14px;
+      align-self: flex-start;
     }
 
     .product-card h3 {
@@ -931,6 +1025,19 @@
       content: "✓ ";
       color: #5d43ff;
       font-weight: 900;
+    }
+
+    .product-actions {
+      margin-top: auto;
+      display: grid;
+      gap: 10px;
+    }
+
+    .product-action {
+      width: 100%;
+      font-size: 16px;
+      padding: 13px 16px;
+      border-radius: 14px;
     }
 
     .services-grid,
@@ -1051,7 +1158,8 @@
       font-size: 20px;
     }
 
-    .contact-form {
+    .contact-form,
+    .modal-form {
       display: grid;
       gap: 16px;
     }
@@ -1062,7 +1170,8 @@
       gap: 14px;
     }
 
-    .contact-form label {
+    .contact-form label,
+    .modal-form label {
       font-size: 18px;
       font-weight: 700;
       color: #1b2341;
@@ -1138,6 +1247,102 @@
       font-size: 22px;
     }
 
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 10, 29, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal.show { display: flex; }
+
+    .modal-card {
+      width: min(760px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: linear-gradient(180deg, #ffffff 0%, #f7f8ff 100%);
+      border-radius: 26px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+      border: 1px solid rgba(15,23,42,0.08);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 24px 24px 10px;
+      border-bottom: 1px solid rgba(15,23,42,0.06);
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 30px;
+      color: #12172b;
+    }
+
+    .modal-body {
+      padding: 22px 24px 24px;
+    }
+
+    .selected-product {
+      padding: 14px 16px;
+      background: rgba(93,67,255,0.06);
+      border: 1px solid rgba(93,67,255,0.12);
+      border-radius: 16px;
+      margin-bottom: 18px;
+      color: #394160;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .selected-product strong {
+      color: #111827;
+      font-size: 18px;
+    }
+
+    .cart-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,0.08);
+      background: #fff;
+      align-items: center;
+    }
+
+    .cart-item strong { font-size: 18px; }
+    .cart-item small { color: #6b728c; display: block; margin-top: 4px; }
+
+    .remove-item {
+      border: none;
+      background: rgba(255, 77, 77, 0.1);
+      color: #c91d1d;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #6b728c;
+      font-size: 18px;
+      padding: 16px 0;
+    }
+
     @media (max-width: 1200px) {
       .hero { grid-template-columns: 1fr; }
       .hero-copy { text-align: center; }
@@ -1183,6 +1388,7 @@
       .card-body h3, .product-card h3, .service h3, .trust h3 { font-size: 24px; }
       .contact-hero { padding: 26px; }
       .contact-grid { padding: 22px; }
+      .modal-header, .modal-body { padding-inline: 18px; }
     }
   </style>
 </head>
@@ -1214,7 +1420,10 @@
         <div class="nav-actions">
           <button class="lang-btn" id="langToggle">EN</button>
           <button class="icon-btn" aria-label="بحث">⌕</button>
-          <button class="icon-btn" aria-label="سلة">🛒</button>
+          <button class="icon-btn" id="cartButton" aria-label="السلة">
+            🛒
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
           <a class="primary-btn trans" href="#contact" data-ar="ابدأ الآن" data-en="Start Now">ابدأ الآن</a>
         </div>
       </nav>
@@ -1292,7 +1501,7 @@
 
       <div class="products-grid">
         <article class="product-card">
-          <div class="product-visual"><div class="switch-mini"></div></div>
+          <div class="product-visual"><div class="switch-box"></div></div>
           <div class="price trans" data-ar="توريد وتركيب" data-en="Supply & Setup">توريد وتركيب</div>
           <h3 class="trans" data-ar="سويتشات شبكات" data-en="Network Switches">سويتشات شبكات</h3>
           <p class="trans" data-ar="Managed وUnmanaged Switches للشركات، المعامل، والأنظمة الاحترافية." data-en="Managed and unmanaged switches for offices, labs, and professional environments.">Managed وUnmanaged Switches للشركات، المعامل، والأنظمة الاحترافية.</p>
@@ -1301,11 +1510,14 @@
             <li class="trans" data-ar="PoE و Gigabit و SFP" data-en="PoE, Gigabit, and SFP">PoE و Gigabit و SFP</li>
             <li class="trans" data-ar="دعم للشبكات الصغيرة والكبيرة" data-en="Support for small and enterprise networks">دعم للشبكات الصغيرة والكبيرة</li>
           </ul>
-          <a class="card-link trans" href="#contact" data-ar="اطلب الآن ←" data-en="Request Now →">اطلب الآن ←</a>
+          <div class="product-actions">
+            <button class="product-action secondary trans open-product-form" data-product="سويتشات شبكات" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            <button class="product-action primary trans add-to-cart" data-product="سويتشات شبكات" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+          </div>
         </article>
 
         <article class="product-card">
-          <div class="product-visual"><div class="wifi-mini"><span></span></div></div>
+          <div class="product-visual"><div class="wifi-box"><span></span></div></div>
           <div class="price trans" data-ar="حلول لاسلكية" data-en="Wireless Solutions">حلول لاسلكية</div>
           <h3 class="trans" data-ar="Access Points و Wi‑Fi" data-en="Access Points & Wi‑Fi">Access Points و Wi‑Fi</h3>
           <p class="trans" data-ar="تغطية مستقرة وسريعة للمكاتب، الشركات، والفروع مع إعداد احترافي للشبكة اللاسلكية." data-en="Stable and fast coverage for offices and branches with professional wireless configuration.">تغطية مستقرة وسريعة للمكاتب، الشركات، والفروع مع إعداد احترافي للشبكة اللاسلكية.</p>
@@ -1314,11 +1526,14 @@
             <li class="trans" data-ar="إدارة مركزية" data-en="Centralized Management">إدارة مركزية</li>
             <li class="trans" data-ar="توزيع ذكي للتغطية" data-en="Smart Coverage Planning">توزيع ذكي للتغطية</li>
           </ul>
-          <a class="card-link trans" href="#contact" data-ar="اطلب الآن ←" data-en="Request Now →">اطلب الآن ←</a>
+          <div class="product-actions">
+            <button class="product-action secondary trans open-product-form" data-product="Access Points و Wi‑Fi" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            <button class="product-action primary trans add-to-cart" data-product="Access Points و Wi‑Fi" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+          </div>
         </article>
 
         <article class="product-card">
-          <div class="product-visual"><div class="server-mini"><span></span><span></span><span></span></div></div>
+          <div class="product-visual"><div class="server-box"><span></span><span></span><span></span></div></div>
           <div class="price trans" data-ar="حلول أعمال" data-en="Business Solutions">حلول أعمال</div>
           <h3 class="trans" data-ar="سيرفرات وتخزين" data-en="Servers & Storage">سيرفرات وتخزين</h3>
           <p class="trans" data-ar="بناء سيرفرات للشركات، أنظمة ملفات، Backup، وتطبيقات تشغيل داخلية بثبات عالٍ." data-en="Business servers for file systems, backup, and internal applications with strong reliability.">بناء سيرفرات للشركات، أنظمة ملفات، Backup، وتطبيقات تشغيل داخلية بثبات عالٍ.</p>
@@ -1327,7 +1542,26 @@
             <li class="trans" data-ar="Backup & Monitoring" data-en="Backup & Monitoring">Backup & Monitoring</li>
             <li class="trans" data-ar="تصميم حسب الاحتياج" data-en="Built to your requirements">تصميم حسب الاحتياج</li>
           </ul>
-          <a class="card-link trans" href="#contact" data-ar="اطلب الآن ←" data-en="Request Now →">اطلب الآن ←</a>
+          <div class="product-actions">
+            <button class="product-action secondary trans open-product-form" data-product="سيرفرات وتخزين" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            <button class="product-action primary trans add-to-cart" data-product="سيرفرات وتخزين" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual"><div class="router-box"></div></div>
+          <div class="price trans" data-ar="بنية اتصالات" data-en="Connectivity">بنية اتصالات</div>
+          <h3 class="trans" data-ar="راوترات احترافية" data-en="Professional Routers">راوترات احترافية</h3>
+          <p class="trans" data-ar="راوترات للشركات والفروع مع VPN وLoad Balancing وتحكم قوي في الشبكة." data-en="Business routers with VPN, load balancing, and strong network control.">راوترات للشركات والفروع مع VPN وLoad Balancing وتحكم قوي في الشبكة.</p>
+          <ul>
+            <li class="trans" data-ar="MikroTik / Cisco / TP-Link" data-en="MikroTik / Cisco / TP-Link">MikroTik / Cisco / TP-Link</li>
+            <li class="trans" data-ar="VPN و Failover" data-en="VPN and Failover">VPN و Failover</li>
+            <li class="trans" data-ar="مناسب للفروع والمكاتب" data-en="Ideal for branches and offices">مناسب للفروع والمكاتب</li>
+          </ul>
+          <div class="product-actions">
+            <button class="product-action secondary trans open-product-form" data-product="راوترات احترافية" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            <button class="product-action primary trans add-to-cart" data-product="راوترات احترافية" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+          </div>
         </article>
 
         <article class="product-card">
@@ -1340,7 +1574,58 @@
             <li class="trans" data-ar="فلترة ومراقبة" data-en="Filtering and Monitoring">فلترة ومراقبة</li>
             <li class="trans" data-ar="حلول مناسبة للشركات" data-en="Business-ready solutions">حلول مناسبة للشركات</li>
           </ul>
-          <a class="card-link trans" href="#contact" data-ar="اطلب الآن ←" data-en="Request Now →">اطلب الآن ←</a>
+          <div class="product-actions">
+            <button class="product-action secondary trans open-product-form" data-product="فايروول وأمن معلومات" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            <button class="product-action primary trans add-to-cart" data-product="فايروول وأمن معلومات" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual"><div class="mikrotik-mini"></div></div>
+          <div class="price trans" data-ar="ISP و Hotspot" data-en="ISP & Hotspot">ISP و Hotspot</div>
+          <h3 class="trans" data-ar="أجهزة MikroTik" data-en="MikroTik Devices">أجهزة MikroTik</h3>
+          <p class="trans" data-ar="حلول إنترنت، Hotspot، Queue، وRouting للشركات ومزودي الخدمة والمشاريع." data-en="Internet, hotspot, queue, and routing solutions for companies, ISPs, and projects.">حلول إنترنت، Hotspot، Queue، وRouting للشركات ومزودي الخدمة والمشاريع.</p>
+          <ul>
+            <li class="trans" data-ar="RB / CCR / CRS" data-en="RB / CCR / CRS">RB / CCR / CRS</li>
+            <li class="trans" data-ar="إعداد مخصص حسب الاستخدام" data-en="Custom setup by use case">إعداد مخصص حسب الاستخدام</li>
+            <li class="trans" data-ar="دعم فني وتشغيل" data-en="Technical setup and support">دعم فني وتشغيل</li>
+          </ul>
+          <div class="product-actions">
+            <button class="product-action secondary trans open-product-form" data-product="أجهزة MikroTik" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            <button class="product-action primary trans add-to-cart" data-product="أجهزة MikroTik" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual"><div class="cabling-mini"></div></div>
+          <div class="price trans" data-ar="بنية تحتية" data-en="Infrastructure">بنية تحتية</div>
+          <h3 class="trans" data-ar="كابلات وإكسسوارات" data-en="Cables & Accessories">كابلات وإكسسوارات</h3>
+          <p class="trans" data-ar="كابلات شبكات، Patch Panels، Connectors، Racks، وكل مستلزمات التركيب والتأسيس." data-en="Network cables, patch panels, connectors, racks, and full installation accessories.">كابلات شبكات، Patch Panels، Connectors، Racks، وكل مستلزمات التركيب والتأسيس.</p>
+          <ul>
+            <li class="trans" data-ar="Cat6 / Cat6A / Fiber" data-en="Cat6 / Cat6A / Fiber">Cat6 / Cat6A / Fiber</li>
+            <li class="trans" data-ar="Racks و Patch Panels" data-en="Racks and Patch Panels">Racks و Patch Panels</li>
+            <li class="trans" data-ar="حلول للمكاتب والمشاريع" data-en="Office and project solutions">حلول للمكاتب والمشاريع</li>
+          </ul>
+          <div class="product-actions">
+            <button class="product-action secondary trans open-product-form" data-product="كابلات وإكسسوارات" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            <button class="product-action primary trans add-to-cart" data-product="كابلات وإكسسوارات" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual"><div class="security-mini"></div></div>
+          <div class="price trans" data-ar="مراقبة وتحكم" data-en="Control & Security">مراقبة وتحكم</div>
+          <h3 class="trans" data-ar="حلول المراقبة والإدارة" data-en="Monitoring & Management">حلول المراقبة والإدارة</h3>
+          <p class="trans" data-ar="أنظمة متابعة أداء الشبكات، مراقبة الأجهزة، والتنبيهات الذكية للأعطال والضغط." data-en="Network monitoring, device observability, and smart alerts for faults and performance.">أنظمة متابعة أداء الشبكات، مراقبة الأجهزة، والتنبيهات الذكية للأعطال والضغط.</p>
+          <ul>
+            <li class="trans" data-ar="Monitoring Dashboards" data-en="Monitoring Dashboards">Monitoring Dashboards</li>
+            <li class="trans" data-ar="تنبيهات وتشخيص" data-en="Alerts and Diagnostics">تنبيهات وتشخيص</li>
+            <li class="trans" data-ar="إدارة مركزية" data-en="Centralized Management">إدارة مركزية</li>
+          </ul>
+          <div class="product-actions">
+            <button class="product-action secondary trans open-product-form" data-product="حلول المراقبة والإدارة" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            <button class="product-action primary trans add-to-cart" data-product="حلول المراقبة والإدارة" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+          </div>
         </article>
       </div>
     </div>
@@ -1571,9 +1856,81 @@
     </div>
   </footer>
 
+  <div class="modal" id="productModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="trans" data-ar="طلب جهاز أو استفسار" data-en="Device Inquiry / Request">طلب جهاز أو استفسار</h3>
+        <button class="modal-close" type="button" id="closeProductModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="selected-product" id="selectedProductInfo">
+          <strong>المنتج المختار:</strong>
+          <span id="selectedProductName">—</span>
+        </div>
+        <form class="modal-form" onsubmit="submitProductRequest(event)">
+          <div class="field-row">
+            <div>
+              <label class="trans" data-ar="الاسم *" data-en="Name *">الاسم *</label>
+              <input class="input" id="productCustomerName" type="text" required placeholder="اكتب اسمك" data-ar-placeholder="اكتب اسمك" data-en-placeholder="Enter your name" />
+            </div>
+            <div>
+              <label class="trans" data-ar="رقم الهاتف *" data-en="Phone *">رقم الهاتف *</label>
+              <input class="input" id="productCustomerPhone" type="tel" required placeholder="+20 100 000 0000" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div>
+              <label class="trans" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+              <input class="input" id="productCustomerEmail" type="email" placeholder="name@email.com" />
+            </div>
+            <div>
+              <label class="trans" data-ar="الشركة" data-en="Company">الشركة</label>
+              <input class="input" id="productCustomerCompany" type="text" placeholder="اسم الشركة" data-ar-placeholder="اسم الشركة" data-en-placeholder="Company name" />
+            </div>
+          </div>
+          <div>
+            <label class="trans" data-ar="المواصفات المطلوبة" data-en="Required Specifications">المواصفات المطلوبة</label>
+            <textarea class="textarea" id="productSpecs" placeholder="اكتب تفاصيل الجهاز أو المواصفات المطلوبة" data-ar-placeholder="اكتب تفاصيل الجهاز أو المواصفات المطلوبة" data-en-placeholder="Write the requested device details or specifications"></textarea>
+          </div>
+          <div>
+            <label class="trans" data-ar="العنوان / المدينة" data-en="Address / City">العنوان / المدينة</label>
+            <input class="input" id="productCustomerAddress" type="text" placeholder="المدينة / المنطقة" data-ar-placeholder="المدينة / المنطقة" data-en-placeholder="City / Area" />
+          </div>
+          <div class="send-row">
+            <div class="send-note trans" data-ar="املأ البيانات وسنتواصل معك بخصوص الجهاز المطلوب." data-en="Fill in your details and we will contact you بشأن المنتج المطلوب.">املأ البيانات وسنتواصل معك بخصوص الجهاز المطلوب.</div>
+            <button class="send-btn trans" type="submit" data-ar="إرسال الطلب" data-en="Send Request">إرسال الطلب</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="cartModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="trans" data-ar="السلة" data-en="Cart">السلة</h3>
+        <button class="modal-close" type="button" id="closeCartModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="cartList" class="cart-list"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const langToggle = document.getElementById('langToggle');
+    const cartCount = document.getElementById('cartCount');
+    const cartButton = document.getElementById('cartButton');
+    const productModal = document.getElementById('productModal');
+    const cartModal = document.getElementById('cartModal');
+    const closeProductModal = document.getElementById('closeProductModal');
+    const closeCartModal = document.getElementById('closeCartModal');
+    const selectedProductName = document.getElementById('selectedProductName');
+    const cartList = document.getElementById('cartList');
+
     let currentLang = 'ar';
+    let selectedProduct = '';
+    let cartItems = [];
 
     function applyLanguage(lang) {
       currentLang = lang;
@@ -1595,18 +1952,109 @@
         const value = lang === 'ar' ? opt.dataset.ar : opt.dataset.en;
         if (value) opt.textContent = value;
       });
+
+      renderCart();
     }
 
     langToggle.addEventListener('click', () => {
       applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
     });
 
+    function openModal(modal) {
+      modal.classList.add('show');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal(modal) {
+      modal.classList.remove('show');
+      if (!productModal.classList.contains('show') && !cartModal.classList.contains('show')) {
+        document.body.classList.remove('modal-open');
+      }
+    }
+
+    function openProductRequest(productName) {
+      selectedProduct = productName;
+      const prefix = currentLang === 'ar' ? 'المنتج المختار: ' : 'Selected product: ';
+      selectedProductName.textContent = productName;
+      selectedProductName.previousElementSibling.textContent = prefix;
+      openModal(productModal);
+    }
+
+    function submitProductRequest(e) {
+      e.preventDefault();
+      alert(currentLang === 'ar'
+        ? `تم إرسال طلبك بخصوص ${selectedProduct}. سنتواصل معك قريبًا.`
+        : `Your request for ${selectedProduct} has been sent successfully.`);
+      e.target.reset();
+      closeModal(productModal);
+    }
+
     function submitForm(e) {
       e.preventDefault();
       alert(currentLang === 'ar' ? 'تم إرسال رسالتك بنجاح.' : 'Your message has been sent successfully.');
     }
 
+    function addToCart(productName) {
+      cartItems.push(productName);
+      updateCartCount();
+      renderCart();
+      alert(currentLang === 'ar'
+        ? `تمت إضافة ${productName} إلى السلة.`
+        : `${productName} has been added to the cart.`);
+    }
+
+    function updateCartCount() {
+      cartCount.textContent = cartItems.length;
+    }
+
+    function removeCartItem(index) {
+      cartItems.splice(index, 1);
+      updateCartCount();
+      renderCart();
+    }
+
+    function renderCart() {
+      if (!cartItems.length) {
+        cartList.innerHTML = `<div class="empty-cart">${currentLang === 'ar' ? 'السلة فارغة حاليًا.' : 'Your cart is currently empty.'}</div>`;
+        return;
+      }
+
+      cartList.innerHTML = cartItems.map((item, index) => `
+        <div class="cart-item">
+          <div>
+            <strong>${item}</strong>
+            <small>${currentLang === 'ar' ? 'منتج مضاف إلى السلة' : 'Added product'}</small>
+          </div>
+          <button class="remove-item" onclick="removeCartItem(${index})">${currentLang === 'ar' ? 'حذف' : 'Remove'}</button>
+        </div>
+      `).join('');
+    }
+
+    document.querySelectorAll('.open-product-form').forEach(btn => {
+      btn.addEventListener('click', () => openProductRequest(btn.dataset.product));
+    });
+
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => addToCart(btn.dataset.product));
+    });
+
+    cartButton.addEventListener('click', () => {
+      renderCart();
+      openModal(cartModal);
+    });
+
+    closeProductModal.addEventListener('click', () => closeModal(productModal));
+    closeCartModal.addEventListener('click', () => closeModal(cartModal));
+
+    [productModal, cartModal].forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal(modal);
+      });
+    });
+
     applyLanguage('ar');
+    updateCartCount();
+    renderCart();
   </script>
 </body>
 </html>
