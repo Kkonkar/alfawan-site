@@ -2056,5 +2056,36 @@
     updateCartCount();
     renderCart();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("HynJlMOk7czf_-YUE"); // Public Key بتاعك
+})();
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("HynJlMOk7czf_-YUE");
+})();
+  
+function submitForm(e) {
+  e.preventDefault();
+
+  emailjs.send("service_qlzo8gt","template_fvgc87b",{
+    name: document.querySelector('input[type="text"]').value,
+    phone: document.querySelector('input[type="tel"]').value,
+    email: document.querySelector('input[type="email"]').value,
+    message: document.querySelector('textarea').value
+  })
+  .then(function(){
+    alert("تم الإرسال بنجاح ✅");
+  }, function(error){
+    alert("في مشكلة ❌");
+    console.log(error);
+  });
+}
+</script>
 </body>
 </html>
