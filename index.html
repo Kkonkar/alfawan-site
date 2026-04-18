@@ -3,21 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ALFAWAN | أجهزة شبكات وسيرفرات</title>
+  <title>ALFAWAN | أجهزة شبكات وسيرفرات وكورسات</title>
   <style>
     :root {
-      --bg: #070b1f;
-      --bg-2: #0d1330;
-      --card: rgba(15, 22, 53, 0.82);
-      --card-light: #f7f8ff;
+      --bg: #060a1d;
+      --bg-2: #091230;
+      --bg-3: #0d173d;
+      --primary: #7c3cff;
+      --primary-2: #2f8dff;
+      --primary-3: #9a5bff;
       --text: #ffffff;
-      --muted: #c7cbe6;
-      --primary: #7a3cff;
-      --primary-2: #2b8cff;
+      --muted: #c8d1f0;
+      --dark-text: #111827;
+      --soft-text: #5d6686;
       --line: rgba(255,255,255,0.08);
-      --shadow: 0 16px 40px rgba(0,0,0,0.28);
+      --light-line: rgba(15, 23, 42, 0.08);
+      --card: rgba(14, 21, 48, 0.8);
+      --white: #ffffff;
+      --section: #f5f7ff;
+      --shadow: 0 18px 48px rgba(15, 23, 42, 0.16);
       --radius: 24px;
-      --container: 1200px;
+      --container: 1240px;
     }
 
     * { box-sizing: border-box; }
@@ -25,79 +31,93 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-      background: linear-gradient(180deg, #eef1fb 0%, #f9faff 100%);
-      color: #111827;
+      background: linear-gradient(180deg, #eef2ff 0%, #fafbff 100%);
+      color: var(--dark-text);
     }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    body.en { direction: ltr; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea, select { font-family: inherit; }
+    img { display: block; max-width: 100%; }
 
     .container {
       width: min(var(--container), calc(100% - 32px));
       margin: 0 auto;
     }
 
+    .hidden { display: none !important; }
+
     .hero-wrap {
       background:
-        radial-gradient(circle at 15% 20%, rgba(122, 60, 255, 0.22), transparent 26%),
-        radial-gradient(circle at 80% 20%, rgba(43, 140, 255, 0.2), transparent 25%),
-        linear-gradient(180deg, #050816 0%, #08102a 100%);
+        radial-gradient(circle at 15% 18%, rgba(124, 60, 255, 0.2), transparent 24%),
+        radial-gradient(circle at 80% 18%, rgba(47, 141, 255, 0.18), transparent 24%),
+        linear-gradient(180deg, #040816 0%, #081029 100%);
       color: var(--text);
-      border-bottom-left-radius: 44px;
-      border-bottom-right-radius: 44px;
+      border-bottom-left-radius: 42px;
+      border-bottom-right-radius: 42px;
       overflow: hidden;
-      box-shadow: var(--shadow);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.22);
     }
 
     .top-logo {
       text-align: center;
-      padding: 20px 0 12px;
+      padding: 20px 0 14px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .brand-stack {
       display: inline-flex;
-      align-items: center;
       flex-direction: column;
+      align-items: center;
       gap: 10px;
+    }
+
+    .logo-mark,
+    .mini-mark {
+      background: linear-gradient(135deg, #b64cff 0%, #6f39ff 55%, #2e94ff 100%);
+      position: relative;
+      clip-path: polygon(22% 100%, 45% 6%, 67% 6%, 100% 100%, 75% 100%, 66% 74%, 43% 74%, 34% 100%);
     }
 
     .logo-mark {
       width: 82px;
       height: 82px;
       border-radius: 26px;
-      background: linear-gradient(135deg, #b64cff 0%, #6a39ff 55%, #2a91ff 100%);
-      position: relative;
-      box-shadow: 0 10px 34px rgba(106, 57, 255, 0.34);
-      clip-path: polygon(22% 100%, 45% 6%, 67% 6%, 100% 100%, 75% 100%, 66% 74%, 43% 74%, 34% 100%);
+      box-shadow: 0 12px 34px rgba(111,57,255,0.34);
     }
 
-    .logo-mark::after {
+    .mini-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      flex: 0 0 auto;
+    }
+
+    .logo-mark::after,
+    .mini-mark::after {
       content: "";
       position: absolute;
       left: 39%;
       top: 48%;
       width: 42%;
       height: 14%;
-      background: linear-gradient(90deg, #cf7cff, #77c2ff);
+      background: linear-gradient(90deg, #d27bff, #74c4ff);
       border-radius: 999px;
       transform: skewX(-20deg);
-      box-shadow: 0 2px 14px rgba(111, 188, 255, 0.45);
     }
 
     .brand-title {
-      font-size: 46px;
+      margin: 0;
+      font-size: 44px;
       font-weight: 900;
       letter-spacing: 2px;
-      margin: 0;
     }
 
     .brand-tagline {
       margin: 0;
-      color: #d7daf3;
-      font-size: 14px;
-      letter-spacing: 3px;
+      font-size: 13px;
       text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #d6daf4;
     }
 
     .navbar {
@@ -106,7 +126,11 @@
       justify-content: space-between;
       gap: 18px;
       padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
     }
 
     .nav-brand {
@@ -114,28 +138,6 @@
       align-items: center;
       gap: 12px;
       min-width: 200px;
-    }
-
-    .nav-brand .mini-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #b64cff 0%, #6a39ff 55%, #2a91ff 100%);
-      clip-path: polygon(22% 100%, 45% 6%, 67% 6%, 100% 100%, 75% 100%, 66% 74%, 43% 74%, 34% 100%);
-      position: relative;
-      flex: 0 0 auto;
-    }
-
-    .nav-brand .mini-mark::after {
-      content: "";
-      position: absolute;
-      left: 39%;
-      top: 48%;
-      width: 42%;
-      height: 14%;
-      background: linear-gradient(90deg, #cf7cff, #77c2ff);
-      border-radius: 999px;
-      transform: skewX(-20deg);
     }
 
     .nav-brand span {
@@ -146,26 +148,28 @@
 
     .nav-links {
       display: flex;
-      gap: 34px;
       align-items: center;
-      flex-wrap: wrap;
       justify-content: center;
-      color: #f4f6ff;
+      gap: 28px;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
+      font-size: 20px;
+      font-weight: 700;
+      color: #eef2ff;
+      opacity: 0.92;
       position: relative;
-      font-weight: 600;
-      opacity: 0.9;
+      cursor: pointer;
     }
 
     .nav-links a.active::after,
     .nav-links a:hover::after {
       content: "";
       position: absolute;
-      right: 0;
       left: 0;
-      bottom: -11px;
+      right: 0;
+      bottom: -10px;
       height: 3px;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--primary), var(--primary-2));
@@ -174,126 +178,141 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 14px;
-      min-width: 220px;
+      gap: 12px;
+      min-width: 260px;
       justify-content: flex-end;
     }
 
-    .icon-btn {
+    .icon-btn,
+    .lang-btn {
       width: 42px;
       height: 42px;
-      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
       display: grid;
       place-items: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.25s ease;
+    }
+
+    .lang-btn { width: auto; padding: 0 14px; border-radius: 999px; font-weight: 800; }
+
+    .icon-btn:hover,
+    .lang-btn:hover,
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .ghost-btn:hover,
+    .send-btn:hover,
+    .tab-btn:hover { transform: translateY(-2px); }
+
+    .primary-btn,
+    .secondary-btn,
+    .ghost-btn,
+    .send-btn,
+    .tab-btn {
+      border: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-weight: 800;
+    }
+
+    .primary-btn,
+    .send-btn,
+    .tab-btn.active {
       color: #fff;
-      background: rgba(255,255,255,0.04);
-      font-size: 18px;
+      background: linear-gradient(90deg, var(--primary), #6d4cff 52%, var(--primary-2));
+      box-shadow: 0 10px 26px rgba(111, 57, 255, 0.28);
     }
 
     .primary-btn,
     .secondary-btn,
-    .ghost-btn {
-      border: none;
-      cursor: pointer;
+    .ghost-btn,
+    .send-btn,
+    .tab-btn {
       border-radius: 16px;
       padding: 15px 24px;
       font-size: 17px;
-      font-weight: 700;
-      transition: 0.25s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
     }
 
-    .primary-btn {
-      color: #fff;
-      background: linear-gradient(90deg, var(--primary) 0%, #6c4cff 55%, var(--primary-2) 100%);
-      box-shadow: 0 10px 26px rgba(110, 74, 255, 0.28);
-    }
-
-    .primary-btn:hover,
-    .secondary-btn:hover,
-    .ghost-btn:hover { transform: translateY(-2px); }
-
-    .secondary-btn {
+    .secondary-btn,
+    .ghost-btn,
+    .tab-btn {
       color: #fff;
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.14);
     }
 
-    .ghost-btn {
-      color: #fff;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.18);
-    }
+    .tab-btn { color: #eef2ff; }
 
     .hero {
       display: grid;
       grid-template-columns: 1.05fr 1fr;
-      gap: 34px;
-      padding: 42px 0 18px;
+      gap: 32px;
       align-items: center;
+      padding: 42px 0 18px;
     }
 
     .hero h1 {
-      margin: 0 0 16px;
-      font-size: clamp(42px, 5vw, 78px);
+      margin: 0 0 18px;
+      font-size: clamp(42px, 5vw, 74px);
       line-height: 1.08;
       font-weight: 900;
     }
 
-    .accent { color: #9b63ff; }
+    .accent { color: #9c66ff; }
 
     .hero p {
       margin: 0;
       font-size: 28px;
-      line-height: 1.7;
-      color: #eef0ff;
-      max-width: 650px;
+      line-height: 1.75;
+      color: #eef2ff;
+      max-width: 700px;
     }
-
-    .hero-copy { padding-bottom: 18px; }
 
     .feature-icons {
       display: flex;
-      gap: 26px;
       flex-wrap: wrap;
+      gap: 24px;
       margin: 34px 0;
     }
 
     .feature-icons .item {
       min-width: 110px;
       text-align: center;
-      color: #dadffb;
+      color: #dbe1ff;
     }
 
     .feature-icons .circle {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       margin: 0 auto 10px;
-      border-radius: 14px;
+      border-radius: 15px;
       display: grid;
       place-items: center;
       font-size: 22px;
-      color: #b892ff;
-      background: rgba(131, 86, 255, 0.1);
+      background: rgba(122,60,255,0.12);
       border: 1px solid rgba(255,255,255,0.08);
     }
 
     .feature-icons strong {
       display: block;
       font-size: 22px;
-      margin-bottom: 6px;
       color: #fff;
+      margin-bottom: 6px;
     }
 
     .cta-row {
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 22px;
+      gap: 14px;
+      margin-bottom: 18px;
     }
 
     .hero-visual {
@@ -307,48 +326,47 @@
     .hero-visual::before {
       content: "";
       position: absolute;
-      inset: 9% 10% 13% 10%;
+      inset: 6% 6% 12% 6%;
+      background: radial-gradient(circle, rgba(130, 67, 255, 0.22) 0%, rgba(47,141,255,0.18) 36%, transparent 72%);
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(122,60,255,0.28) 0%, rgba(43,140,255,0.16) 36%, transparent 70%);
-      filter: blur(8px);
+      filter: blur(10px);
     }
 
     .device-stack {
       position: relative;
-      width: min(100%, 650px);
+      width: min(100%, 680px);
       z-index: 1;
     }
 
     .rack {
       position: absolute;
-      left: 55%;
+      left: 76%;
       top: 6%;
-      width: 150px;
-      height: 355px;
-      transform: translateX(-50%);
-      border-radius: 16px;
-      background: linear-gradient(180deg, #0d122d, #101833);
+      width: 145px;
+      height: 370px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #0e1432, #101a37);
       border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: var(--shadow);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       overflow: hidden;
     }
 
     .rack::before {
       content: "";
       position: absolute;
-      inset: 18px;
-      background:
-        repeating-linear-gradient(180deg, rgba(60, 126, 255, 0.7) 0 5px, transparent 5px 22px),
-        repeating-linear-gradient(90deg, rgba(154, 101, 255, 0.12) 0 100%);
+      inset: 16px;
       border-radius: 10px;
-      opacity: 0.75;
+      background:
+        repeating-linear-gradient(180deg, rgba(72, 162, 255, 0.72) 0 5px, transparent 5px 21px),
+        linear-gradient(180deg, rgba(138, 86, 255, 0.12), rgba(43, 140, 255, 0.08));
+      opacity: 0.8;
     }
 
     .switches {
       position: absolute;
-      right: 15px;
-      top: 18%;
-      width: 410px;
+      right: 95px;
+      top: 16%;
+      width: 420px;
       display: grid;
       gap: 16px;
     }
@@ -356,24 +374,23 @@
     .switch {
       height: 84px;
       border-radius: 16px;
-      background: linear-gradient(180deg, #182343, #0e1730);
+      background: linear-gradient(180deg, #182343, #0f1831);
       border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
-      position: relative;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
       padding: 16px 20px;
-      overflow: hidden;
+      position: relative;
     }
 
     .switch::before {
       content: "";
       position: absolute;
-      top: 18px;
-      right: 16px;
-      width: 74px;
+      top: 16px;
+      right: 20px;
+      width: 72px;
       height: 16px;
-      background: linear-gradient(90deg, rgba(122,60,255,0.7), rgba(43,140,255,0.75));
-      border-radius: 99px;
-      opacity: 0.65;
+      background: linear-gradient(90deg, rgba(136,86,255,0.72), rgba(57,165,255,0.8));
+      border-radius: 999px;
+      opacity: 0.7;
     }
 
     .ports {
@@ -386,7 +403,7 @@
     .port {
       height: 18px;
       border-radius: 4px;
-      background: linear-gradient(180deg, #222f5a, #0b1124);
+      background: linear-gradient(180deg, #24335f, #0b1125);
       border: 1px solid rgba(255,255,255,0.08);
       position: relative;
     }
@@ -396,24 +413,23 @@
       position: absolute;
       width: 6px;
       height: 3px;
-      background: #7ee787;
-      top: 2px;
       left: 3px;
+      top: 2px;
+      background: #79ffad;
       border-radius: 999px;
-      box-shadow: 8px 0 0 #65a9ff;
-      opacity: 0.9;
+      box-shadow: 8px 0 0 #67b2ff;
     }
 
     .router {
       position: absolute;
-      left: 22px;
-      bottom: 30px;
-      width: 220px;
-      height: 88px;
+      left: 26px;
+      bottom: 38px;
+      width: 210px;
+      height: 82px;
       border-radius: 18px;
-      background: linear-gradient(180deg, #11182d, #0a1020);
+      background: linear-gradient(180deg, #12192d, #0b1020);
       border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: var(--shadow);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.28);
     }
 
     .router::before,
@@ -422,17 +438,17 @@
       position: absolute;
       width: 8px;
       height: 72px;
-      bottom: 68px;
-      background: linear-gradient(180deg, #dde5ff, #7d90ff);
+      bottom: 66px;
+      background: linear-gradient(180deg, #eef3ff, #8092ff);
       border-radius: 999px;
     }
 
-    .router::before { right: 42px; }
-    .router::after { right: 22px; }
+    .router::before { right: 40px; }
+    .router::after { right: 20px; }
 
     .router-leds {
       position: absolute;
-      left: 18px;
+      left: 16px;
       bottom: 18px;
       display: flex;
       gap: 8px;
@@ -441,21 +457,20 @@
     .router-leds span {
       width: 10px;
       height: 10px;
-      background: #59ffa0;
       border-radius: 50%;
-      box-shadow: 0 0 12px rgba(89,255,160,0.65);
+      background: #59ffa0;
+      box-shadow: 0 0 14px rgba(89,255,160,0.7);
     }
 
     .access-point {
       position: absolute;
-      right: 95px;
-      bottom: 60px;
+      right: 54px;
+      bottom: 70px;
       width: 165px;
       height: 165px;
       border-radius: 50%;
-      background: radial-gradient(circle at 40% 35%, #ffffff 0%, #eef2ff 65%, #dce6ff 100%);
-      box-shadow: 0 18px 36px rgba(8,14,35,0.35);
-      border: 6px solid rgba(255,255,255,0.08);
+      background: radial-gradient(circle at 40% 35%, #ffffff 0%, #eef2ff 65%, #dce5ff 100%);
+      box-shadow: 0 18px 36px rgba(8, 14, 35, 0.35);
     }
 
     .access-point::before {
@@ -463,13 +478,13 @@
       position: absolute;
       inset: 34px;
       border-radius: 50%;
-      border: 4px solid rgba(72, 191, 255, 0.6);
+      border: 4px solid rgba(76, 189, 255, 0.6);
     }
 
     .cables {
       position: absolute;
       left: 70px;
-      bottom: 55px;
+      bottom: 58px;
       width: 220px;
       height: 70px;
     }
@@ -477,9 +492,9 @@
     .cables span {
       position: absolute;
       inset: 0;
-      border-bottom: 7px solid rgba(43,140,255,0.95);
+      border-bottom: 7px solid rgba(47,141,255,0.95);
       border-radius: 0 0 120px 120px;
-      filter: drop-shadow(0 0 12px rgba(43,140,255,0.45));
+      filter: drop-shadow(0 0 12px rgba(47,141,255,0.42));
     }
 
     .cables span:nth-child(2) {
@@ -496,19 +511,19 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      padding: 14px 0 34px;
+      padding: 16px 0 34px;
     }
 
     .stat {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 18px 22px;
       display: flex;
       align-items: center;
       gap: 14px;
+      padding: 18px 22px;
       color: #fff;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      box-shadow: 0 12px 22px rgba(0,0,0,0.12);
     }
 
     .stat .ico {
@@ -517,15 +532,15 @@
       border-radius: 16px;
       display: grid;
       place-items: center;
-      background: rgba(122,60,255,0.12);
-      color: #77baff;
       font-size: 24px;
+      color: #77baff;
+      background: rgba(122,60,255,0.12);
       border: 1px solid rgba(255,255,255,0.08);
     }
 
     .stat strong {
       display: block;
-      font-size: 36px;
+      font-size: 34px;
       line-height: 1;
       margin-bottom: 6px;
     }
@@ -540,28 +555,28 @@
     }
 
     .eyebrow {
-      color: #6d55ff;
-      font-weight: 800;
-      font-size: 28px;
       margin: 0 0 10px;
+      color: #6a54ff;
+      font-size: 28px;
+      font-weight: 900;
     }
 
     .section-title h2 {
       margin: 0 0 12px;
-      font-size: clamp(36px, 4vw, 60px);
+      font-size: clamp(36px, 4vw, 58px);
       line-height: 1.2;
-      color: #111427;
+      color: #13172a;
     }
 
     .section-title p {
       margin: 0 auto;
+      max-width: 920px;
+      color: var(--soft-text);
       font-size: 24px;
-      color: #5f647d;
-      max-width: 900px;
       line-height: 1.8;
     }
 
-    .courses-grid {
+    .cards-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
@@ -570,16 +585,19 @@
     .card {
       background: #fff;
       border-radius: 24px;
-      box-shadow: 0 16px 40px rgba(38, 45, 89, 0.08);
       overflow: hidden;
-      border: 1px solid rgba(16,24,40,0.06);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15,23,42,0.05);
+      transition: 0.25s ease;
     }
+
+    .card:hover { transform: translateY(-6px); }
 
     .card-cover {
       height: 240px;
       position: relative;
+      background: linear-gradient(135deg, #070b1f, #0d1640 60%, #181f69 100%);
       overflow: hidden;
-      background: linear-gradient(135deg, #070b1f, #0d1640 58%, #171e66 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -594,8 +612,8 @@
       padding: 8px 14px;
       border-radius: 999px;
       font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 10px 18px rgba(116, 80, 255, 0.24);
+      font-weight: 800;
+      box-shadow: 0 10px 18px rgba(116,80,255,0.24);
     }
 
     .course-icon {
@@ -610,7 +628,6 @@
       position: absolute;
       border-radius: 18px;
       border: 3px solid #58a6ff;
-      box-shadow: 0 0 18px rgba(88,166,255,0.32);
     }
 
     .course-1 .course-icon::before {
@@ -628,9 +645,14 @@
         radial-gradient(circle at 48% 72%, #8a55ff 0 7px, transparent 8px);
     }
 
-    .course-2 .server-mini,
-    .course-3 .switch-mini,
-    .course-4 .wifi-mini {
+    .server-mini,
+    .switch-mini,
+    .wifi-mini,
+    .security-mini,
+    .mikrotik-mini,
+    .cabling-mini,
+    .virtualization-mini,
+    .firewall-mini {
       position: absolute;
       inset: 0;
       margin: auto;
@@ -679,8 +701,7 @@
       right: 10px;
       bottom: 14px;
       height: 18px;
-      background:
-        repeating-linear-gradient(90deg, #1e2a53 0 11px, #0a1227 11px 16px);
+      background: repeating-linear-gradient(90deg, #1e2a53 0 11px, #0a1227 11px 16px);
       border-radius: 5px;
       border: 1px solid rgba(255,255,255,0.08);
     }
@@ -702,19 +723,8 @@
       translate: -50% 0;
     }
 
-    .wifi-mini::before {
-      width: 110px;
-      height: 110px;
-      top: 14px;
-      box-shadow: 0 -12px 24px rgba(85, 200, 255, 0.15);
-    }
-
-    .wifi-mini::after {
-      width: 72px;
-      height: 72px;
-      top: 33px;
-    }
-
+    .wifi-mini::before { width: 110px; height: 110px; top: 14px; }
+    .wifi-mini::after { width: 72px; height: 72px; top: 33px; }
     .wifi-mini span {
       position: absolute;
       left: 50%;
@@ -724,32 +734,127 @@
       height: 20px;
       border-radius: 50%;
       background: linear-gradient(135deg, #8d5bff, #2b8cff);
-      box-shadow: 0 0 18px rgba(104,129,255,0.5);
     }
 
-    .card-body {
-      padding: 24px 22px 26px;
+    .security-mini {
+      width: 120px;
+      height: 140px;
+      background: linear-gradient(180deg, #233a78, #10172f);
+      clip-path: polygon(50% 0%, 86% 14%, 86% 54%, 50% 100%, 14% 54%, 14% 14%);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.22);
     }
 
+    .security-mini::after {
+      content: "🔒";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 42px;
+    }
+
+    .mikrotik-mini {
+      width: 150px;
+      height: 80px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f0f4ff, #dbe4ff);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .mikrotik-mini::after {
+      content: "";
+      position: absolute;
+      inset: auto 12px 14px 12px;
+      height: 18px;
+      background: repeating-linear-gradient(90deg, #24335f 0 12px, #0a1227 12px 16px);
+      border-radius: 5px;
+    }
+
+    .cabling-mini {
+      width: 150px;
+      height: 120px;
+    }
+
+    .cabling-mini::before,
+    .cabling-mini::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-bottom: 8px solid #47b0ff;
+      border-radius: 0 0 120px 120px;
+    }
+
+    .cabling-mini::after {
+      transform: translateY(18px) scaleX(0.8);
+      border-bottom-color: #935bff;
+    }
+
+    .virtualization-mini {
+      width: 140px;
+      height: 140px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #17203d, #10172f);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .virtualization-mini::before,
+    .virtualization-mini::after {
+      content: "";
+      position: absolute;
+      border: 3px solid rgba(88,166,255,0.8);
+      border-radius: 16px;
+    }
+
+    .virtualization-mini::before { inset: 20px 20px auto; height: 32px; }
+    .virtualization-mini::after { inset: auto 20px 20px; height: 60px; }
+
+    .firewall-mini {
+      width: 140px;
+      height: 100px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #34153a, #151426);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.24);
+    }
+
+    .firewall-mini::before {
+      content: "🧱";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 42px;
+    }
+
+    .card-body { padding: 24px 22px 26px; }
     .card-body h3 {
       margin: 0 0 12px;
-      font-size: 38px;
+      font-size: 34px;
       line-height: 1.25;
-      color: #14182b;
+      color: #13182c;
     }
-
     .card-body p {
       margin: 0 0 16px;
-      color: #5c627c;
-      font-size: 22px;
+      color: var(--soft-text);
+      font-size: 21px;
       line-height: 1.7;
       min-height: 92px;
     }
-
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #6b728c;
+      font-size: 16px;
+      margin-bottom: 14px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
     .card-link {
+      font-size: 21px;
       color: #5d43ff;
-      font-weight: 800;
-      font-size: 22px;
+      font-weight: 900;
     }
 
     .center-btn {
@@ -757,36 +862,256 @@
       margin-top: 34px;
     }
 
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15,23,42,0.05);
+      transition: 0.25s ease;
+    }
+
+    .product-card:hover { transform: translateY(-6px); }
+
+    .product-visual {
+      height: 180px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #09102a, #0d1640 62%, #1a2371);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(93,67,255,0.08);
+      color: #5d43ff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .product-card h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    .product-card p {
+      margin: 0 0 16px;
+      color: var(--soft-text);
+      font-size: 19px;
+      line-height: 1.7;
+      min-height: 64px;
+    }
+
+    .product-card ul {
+      margin: 0 0 18px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: #374061;
+      font-size: 17px;
+    }
+
+    .product-card ul li::before {
+      content: "✓ ";
+      color: #5d43ff;
+      font-weight: 900;
+    }
+
+    .services-grid,
     .trust-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin-top: 46px;
     }
 
+    .service,
     .trust {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      justify-content: center;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(14, 23, 48, 0.08);
-      border-radius: 18px;
-      padding: 20px;
-      color: #283052;
-      font-size: 22px;
-      font-weight: 700;
+      background: rgba(255,255,255,0.82);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 12px 30px rgba(38,45,89,0.08);
+      border: 1px solid rgba(15,23,42,0.06);
     }
 
+    .service .i,
     .trust .i {
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
-      border-radius: 14px;
-      color: #6649ff;
       background: rgba(102,73,255,0.08);
+      color: #6649ff;
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .service h3,
+    .trust h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+    }
+
+    .service p,
+    .trust p {
+      margin: 0;
+      color: var(--soft-text);
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .contact-wrap {
+      background: linear-gradient(180deg, #ffffff 0%, #f7f8ff 100%);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(15,23,42,0.06);
+    }
+
+    .contact-hero {
+      background: linear-gradient(90deg, #044a66, #0f617f 45%, #0f3457 100%);
+      color: #fff;
+      padding: 36px 42px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 65%, rgba(255,255,255,0.08) 100%);
+      pointer-events: none;
+    }
+
+    .contact-hero h2 {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 58px);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.2fr;
+      gap: 28px;
+      padding: 34px;
+      align-items: start;
+    }
+
+    .contact-info {
+      padding: 8px 0;
+    }
+
+    .contact-info p {
+      margin: 0 0 18px;
+      color: var(--soft-text);
       font-size: 22px;
+      line-height: 1.9;
+    }
+
+    .contact-lines {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      color: #283052;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .contact-line .dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(102,73,255,0.08);
+      color: #6649ff;
+      flex: 0 0 auto;
+      font-size: 20px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact-form label {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1b2341;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .input,
+    .textarea,
+    .select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #d8def0;
+      background: #fff;
+      padding: 14px 16px;
+      font-size: 17px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    .input:focus,
+    .textarea:focus,
+    .select:focus {
+      border-color: #7c3cff;
+      box-shadow: 0 0 0 4px rgba(124,60,255,0.09);
+    }
+
+    .textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .send-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .send-note {
+      color: var(--soft-text);
+      font-size: 16px;
+    }
+
+    .send-btn {
+      min-width: 160px;
+      padding-inline: 34px;
     }
 
     .footer {
@@ -813,46 +1138,51 @@
       font-size: 22px;
     }
 
-    .footer-brand .mini-mark { width: 34px; height: 34px; border-radius: 12px; }
-
     @media (max-width: 1200px) {
       .hero { grid-template-columns: 1fr; }
       .hero-copy { text-align: center; }
       .hero p { margin-inline: auto; }
       .feature-icons, .cta-row { justify-content: center; }
       .stats,
-      .courses-grid,
-      .trust-row { grid-template-columns: repeat(2, 1fr); }
+      .cards-grid,
+      .products-grid,
+      .services-grid,
+      .trust-row,
+      .contact-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
       .hero-visual { min-height: 540px; }
     }
 
     @media (max-width: 860px) {
-      .navbar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .nav-brand,
-      .nav-actions { justify-content: center; min-width: 0; }
+      .navbar { flex-direction: column; align-items: stretch; }
+      .nav-brand, .nav-actions { justify-content: center; min-width: 0; }
       .nav-links { gap: 18px; }
       .brand-title { font-size: 34px; }
       .hero h1 { font-size: 40px; }
       .hero p,
       .section-title p,
+      .product-card p,
       .card-body p,
-      .trust { font-size: 18px; }
+      .service p,
+      .trust p,
+      .contact-info p { font-size: 18px; }
       .stats,
-      .courses-grid,
-      .trust-row { grid-template-columns: 1fr; }
-      .hero-visual { min-height: 480px; }
-      .switches { width: 290px; top: 25%; }
+      .cards-grid,
+      .products-grid,
+      .services-grid,
+      .trust-row,
+      .field-row { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 460px; }
+      .switches { width: 290px; top: 25%; right: 46px; }
       .switch { height: 68px; }
       .ports { grid-template-columns: repeat(6, 1fr); }
-      .rack { width: 110px; height: 270px; left: 65%; }
-      .access-point { width: 120px; height: 120px; right: 55px; }
-      .router { width: 170px; height: 72px; }
-      .cables { width: 150px; left: 40px; }
-      .card-body h3 { font-size: 28px; }
-      .card-link { font-size: 18px; }
+      .rack { width: 104px; height: 280px; left: 78%; }
+      .access-point { width: 120px; height: 120px; right: 36px; }
+      .router { width: 170px; height: 70px; left: 12px; }
+      .cables { width: 150px; left: 30px; }
+      .card-body h3, .product-card h3, .service h3, .trust h3 { font-size: 24px; }
+      .contact-hero { padding: 26px; }
+      .contact-grid { padding: 22px; }
     }
   </style>
 </head>
@@ -874,212 +1204,409 @@
         </div>
 
         <div class="nav-links">
-          <a class="active" href="#home">الرئيسية</a>
-          <a href="#devices">الأجهزة</a>
-          <a href="#courses">الكورسات</a>
-          <a href="#services">الخدمات</a>
-          <a href="#contact">تواصل معنا</a>
+          <a class="active nav-link" href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+          <a class="nav-link" href="#devices" data-ar="الأجهزة" data-en="Devices">الأجهزة</a>
+          <a class="nav-link" href="#courses" data-ar="الكورسات" data-en="Courses">الكورسات</a>
+          <a class="nav-link" href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
+          <a class="nav-link" href="#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
         </div>
 
         <div class="nav-actions">
-          <a class="icon-btn" href="#" aria-label="بحث">⌕</a>
-          <a class="icon-btn" href="#" aria-label="سلة">🛒</a>
-          <a class="primary-btn" href="#contact">ابدأ الآن</a>
+          <button class="lang-btn" id="langToggle">EN</button>
+          <button class="icon-btn" aria-label="بحث">⌕</button>
+          <button class="icon-btn" aria-label="سلة">🛒</button>
+          <a class="primary-btn trans" href="#contact" data-ar="ابدأ الآن" data-en="Start Now">ابدأ الآن</a>
         </div>
       </nav>
 
       <section class="hero" id="home">
         <div class="hero-copy">
-          <h1>أجهزة شبكات <br><span class="accent">وسيرفرات احترافية</span></h1>
-          <p>كل ما تحتاجه لبناء وتطوير شبكتك بأفضل الجودة والأداء، مع كورسات عملية تساعدك على الاحتراف.</p>
+          <h1>
+            <span class="trans" data-ar="أجهزة شبكات" data-en="Professional Network">أجهزة شبكات</span><br>
+            <span class="accent trans" data-ar="وسيرفرات احترافية" data-en="Devices & Servers">وسيرفرات احترافية</span>
+          </h1>
+          <p class="trans" data-ar="كل ما تحتاجه لبناء وتطوير شبكتك بأفضل الجودة والأداء، مع كورسات عملية تساعدك على الاحتراف." data-en="Everything you need to build and upgrade your network with high performance hardware, plus practical training courses to help you become professional.">
+            كل ما تحتاجه لبناء وتطوير شبكتك بأفضل الجودة والأداء، مع كورسات عملية تساعدك على الاحتراف.
+          </p>
 
           <div class="feature-icons">
             <div class="item">
               <div class="circle">🛡</div>
-              <strong>ضمان</strong>
-              <div>موثوق</div>
+              <strong class="trans" data-ar="ضمان" data-en="Warranty">ضمان</strong>
+              <div class="trans" data-ar="موثوق" data-en="Trusted">موثوق</div>
             </div>
             <div class="item">
               <div class="circle">🚚</div>
-              <strong>شحن سريع</strong>
-              <div>لكافة المناطق</div>
+              <strong class="trans" data-ar="شحن سريع" data-en="Fast Shipping">شحن سريع</strong>
+              <div class="trans" data-ar="لكافة المناطق" data-en="All Areas">لكافة المناطق</div>
             </div>
             <div class="item">
               <div class="circle">⚙</div>
-              <strong>دعم فني</strong>
-              <div>على مدار الساعة</div>
+              <strong class="trans" data-ar="دعم فني" data-en="Tech Support">دعم فني</strong>
+              <div class="trans" data-ar="على مدار الساعة" data-en="24/7 Available">على مدار الساعة</div>
             </div>
             <div class="item">
               <div class="circle">✔</div>
-              <strong>جودة</strong>
-              <div>معتمدة</div>
+              <strong class="trans" data-ar="جودة" data-en="Quality">جودة</strong>
+              <div class="trans" data-ar="معتمدة" data-en="Certified">معتمدة</div>
             </div>
           </div>
 
           <div class="cta-row">
-            <a class="primary-btn" href="#devices">تصفح الأجهزة ←</a>
-            <a class="ghost-btn" href="#contact">تواصل معنا</a>
+            <a class="primary-btn trans" href="#devices" data-ar="تصفح الأجهزة ←" data-en="Browse Devices →">تصفح الأجهزة ←</a>
+            <a class="ghost-btn trans" href="#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
           </div>
         </div>
 
         <div class="hero-visual" id="devices">
           <div class="device-stack">
             <div class="rack"></div>
-
             <div class="switches">
-              <div class="switch">
-                <div class="ports">
-                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
-                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
-                </div>
-              </div>
-              <div class="switch">
-                <div class="ports">
-                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
-                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
-                </div>
-              </div>
-              <div class="switch">
-                <div class="ports">
-                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
-                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
-                </div>
-              </div>
+              <div class="switch"><div class="ports"><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span></div></div>
+              <div class="switch"><div class="ports"><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span></div></div>
+              <div class="switch"><div class="ports"><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span></div></div>
             </div>
-
             <div class="access-point"></div>
-
-            <div class="router">
-              <div class="router-leds">
-                <span></span><span></span><span></span><span></span>
-              </div>
-            </div>
-
-            <div class="cables">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+            <div class="router"><div class="router-leds"><span></span><span></span><span></span><span></span></div></div>
+            <div class="cables"><span></span><span></span><span></span></div>
           </div>
         </div>
       </section>
 
       <div class="stats">
-        <div class="stat">
-          <div class="ico">🖧</div>
-          <div>
-            <strong>5000+</strong>
-            <div>جهاز متوفر</div>
-          </div>
-        </div>
-        <div class="stat">
-          <div class="ico">🗄</div>
-          <div>
-            <strong>1000+</strong>
-            <div>عميل راضي</div>
-          </div>
-        </div>
-        <div class="stat">
-          <div class="ico">⭐</div>
-          <div>
-            <strong>5</strong>
-            <div>سنوات من الخبرة</div>
-          </div>
-        </div>
-        <div class="stat">
-          <div class="ico">🕒</div>
-          <div>
-            <strong>24/7</strong>
-            <div>دعم فني</div>
-          </div>
-        </div>
+        <div class="stat"><div class="ico">🖧</div><div><strong>5000+</strong><div class="trans" data-ar="جهاز متوفر" data-en="Available Devices">جهاز متوفر</div></div></div>
+        <div class="stat"><div class="ico">🗄</div><div><strong>1000+</strong><div class="trans" data-ar="عميل راضي" data-en="Happy Clients">عميل راضي</div></div></div>
+        <div class="stat"><div class="ico">⭐</div><div><strong>5</strong><div class="trans" data-ar="سنوات من الخبرة" data-en="Years Experience">سنوات من الخبرة</div></div></div>
+        <div class="stat"><div class="ico">🕒</div><div><strong>24/7</strong><div class="trans" data-ar="دعم فني" data-en="Technical Support">دعم فني</div></div></div>
       </div>
     </div>
   </div>
 
+  <section class="section" id="devices-section">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow trans" data-ar="منتجاتنا" data-en="Our Products">منتجاتنا</p>
+        <h2 class="trans" data-ar="أجهزة احترافية للشركات ومهندسي الشبكات" data-en="Professional Hardware for Companies and Network Engineers">أجهزة احترافية للشركات ومهندسي الشبكات</h2>
+        <p class="trans" data-ar="نوفر لك سويتشات، راوترات، Access Points، سيرفرات، فايروول، وحلول بنية تحتية للشبكات بجودة عالية وأسعار تنافسية." data-en="We provide switches, routers, access points, servers, firewalls, and infrastructure solutions with high quality and competitive pricing.">نوفر لك سويتشات، راوترات، Access Points، سيرفرات، فايروول، وحلول بنية تحتية للشبكات بجودة عالية وأسعار تنافسية.</p>
+      </div>
+
+      <div class="products-grid">
+        <article class="product-card">
+          <div class="product-visual"><div class="switch-mini"></div></div>
+          <div class="price trans" data-ar="توريد وتركيب" data-en="Supply & Setup">توريد وتركيب</div>
+          <h3 class="trans" data-ar="سويتشات شبكات" data-en="Network Switches">سويتشات شبكات</h3>
+          <p class="trans" data-ar="Managed وUnmanaged Switches للشركات، المعامل، والأنظمة الاحترافية." data-en="Managed and unmanaged switches for offices, labs, and professional environments.">Managed وUnmanaged Switches للشركات، المعامل، والأنظمة الاحترافية.</p>
+          <ul>
+            <li class="trans" data-ar="Cisco / MikroTik / TP-Link" data-en="Cisco / MikroTik / TP-Link">Cisco / MikroTik / TP-Link</li>
+            <li class="trans" data-ar="PoE و Gigabit و SFP" data-en="PoE, Gigabit, and SFP">PoE و Gigabit و SFP</li>
+            <li class="trans" data-ar="دعم للشبكات الصغيرة والكبيرة" data-en="Support for small and enterprise networks">دعم للشبكات الصغيرة والكبيرة</li>
+          </ul>
+          <a class="card-link trans" href="#contact" data-ar="اطلب الآن ←" data-en="Request Now →">اطلب الآن ←</a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual"><div class="wifi-mini"><span></span></div></div>
+          <div class="price trans" data-ar="حلول لاسلكية" data-en="Wireless Solutions">حلول لاسلكية</div>
+          <h3 class="trans" data-ar="Access Points و Wi‑Fi" data-en="Access Points & Wi‑Fi">Access Points و Wi‑Fi</h3>
+          <p class="trans" data-ar="تغطية مستقرة وسريعة للمكاتب، الشركات، والفروع مع إعداد احترافي للشبكة اللاسلكية." data-en="Stable and fast coverage for offices and branches with professional wireless configuration.">تغطية مستقرة وسريعة للمكاتب، الشركات، والفروع مع إعداد احترافي للشبكة اللاسلكية.</p>
+          <ul>
+            <li class="trans" data-ar="UniFi / TP-Link / Cisco" data-en="UniFi / TP-Link / Cisco">UniFi / TP-Link / Cisco</li>
+            <li class="trans" data-ar="إدارة مركزية" data-en="Centralized Management">إدارة مركزية</li>
+            <li class="trans" data-ar="توزيع ذكي للتغطية" data-en="Smart Coverage Planning">توزيع ذكي للتغطية</li>
+          </ul>
+          <a class="card-link trans" href="#contact" data-ar="اطلب الآن ←" data-en="Request Now →">اطلب الآن ←</a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual"><div class="server-mini"><span></span><span></span><span></span></div></div>
+          <div class="price trans" data-ar="حلول أعمال" data-en="Business Solutions">حلول أعمال</div>
+          <h3 class="trans" data-ar="سيرفرات وتخزين" data-en="Servers & Storage">سيرفرات وتخزين</h3>
+          <p class="trans" data-ar="بناء سيرفرات للشركات، أنظمة ملفات، Backup، وتطبيقات تشغيل داخلية بثبات عالٍ." data-en="Business servers for file systems, backup, and internal applications with strong reliability.">بناء سيرفرات للشركات، أنظمة ملفات، Backup، وتطبيقات تشغيل داخلية بثبات عالٍ.</p>
+          <ul>
+            <li class="trans" data-ar="Windows / Linux Servers" data-en="Windows / Linux Servers">Windows / Linux Servers</li>
+            <li class="trans" data-ar="Backup & Monitoring" data-en="Backup & Monitoring">Backup & Monitoring</li>
+            <li class="trans" data-ar="تصميم حسب الاحتياج" data-en="Built to your requirements">تصميم حسب الاحتياج</li>
+          </ul>
+          <a class="card-link trans" href="#contact" data-ar="اطلب الآن ←" data-en="Request Now →">اطلب الآن ←</a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual"><div class="firewall-mini"></div></div>
+          <div class="price trans" data-ar="حماية الشبكات" data-en="Network Security">حماية الشبكات</div>
+          <h3 class="trans" data-ar="فايروول وأمن معلومات" data-en="Firewalls & Security">فايروول وأمن معلومات</h3>
+          <p class="trans" data-ar="تأمين الشبكات، التحكم في الوصول، وإعداد سياسات الحماية للمكاتب والشركات." data-en="Secure networks, control access, and configure protection policies for offices and businesses.">تأمين الشبكات، التحكم في الوصول، وإعداد سياسات الحماية للمكاتب والشركات.</p>
+          <ul>
+            <li class="trans" data-ar="Rules و VPN" data-en="Rules and VPN">Rules و VPN</li>
+            <li class="trans" data-ar="فلترة ومراقبة" data-en="Filtering and Monitoring">فلترة ومراقبة</li>
+            <li class="trans" data-ar="حلول مناسبة للشركات" data-en="Business-ready solutions">حلول مناسبة للشركات</li>
+          </ul>
+          <a class="card-link trans" href="#contact" data-ar="اطلب الآن ←" data-en="Request Now →">اطلب الآن ←</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="courses">
     <div class="container">
       <div class="section-title">
-        <p class="eyebrow">طور مهاراتك</p>
-        <h2>كورسات متخصصة في الشبكات والسيرفرات</h2>
-        <p>تعلم من الصفر واحتراف إدارة الشبكات والسيرفرات بخطوات عملية مبسطة، مع محتوى عربي واضح مناسب لسوق العمل.</p>
+        <p class="eyebrow trans" data-ar="طور مهاراتك" data-en="Grow Your Skills">طور مهاراتك</p>
+        <h2 class="trans" data-ar="كورسات متخصصة في الشبكات والسيرفرات" data-en="Specialized Networking & Server Courses">كورسات متخصصة في الشبكات والسيرفرات</h2>
+        <p class="trans" data-ar="تعلم من الصفر واحتراف إدارة الشبكات والسيرفرات بخطوات عملية مبسطة، مع محتوى عربي واضح مناسب لسوق العمل." data-en="Learn from scratch and master networking and servers through practical, market-focused training in Arabic and English-friendly structure.">تعلم من الصفر واحتراف إدارة الشبكات والسيرفرات بخطوات عملية مبسطة، مع محتوى عربي واضح مناسب لسوق العمل.</p>
       </div>
 
-      <div class="courses-grid">
+      <div class="cards-grid">
         <article class="card course-1">
           <div class="card-cover">
-            <span class="badge">مبتدئ</span>
+            <span class="badge trans" data-ar="مبتدئ" data-en="Beginner">مبتدئ</span>
             <div class="course-icon"></div>
           </div>
           <div class="card-body">
-            <h3>أساسيات الشبكات</h3>
-            <p>تعلم مفاهيم IP وSubnetting وتصميم الشبكات من الصفر مع أمثلة عملية وسهلة.</p>
-            <a class="card-link" href="#">استكشف الكورس ←</a>
+            <div class="meta"><span class="trans" data-ar="12 ساعة" data-en="12 Hours">12 ساعة</span><span>4.8 ★</span></div>
+            <h3 class="trans" data-ar="أساسيات الشبكات" data-en="Networking Fundamentals">أساسيات الشبكات</h3>
+            <p class="trans" data-ar="تعلم مفاهيم IP وSubnetting وتصميم الشبكات من الصفر مع أمثلة عملية وسهلة." data-en="Learn IP, subnetting, and core networking concepts from scratch with easy practical examples.">تعلم مفاهيم IP وSubnetting وتصميم الشبكات من الصفر مع أمثلة عملية وسهلة.</p>
+            <a class="card-link trans" href="#contact" data-ar="استكشف الكورس ←" data-en="Explore Course →">استكشف الكورس ←</a>
           </div>
         </article>
 
-        <article class="card course-2">
+        <article class="card">
           <div class="card-cover">
-            <span class="badge">متوسط</span>
-            <div class="course-icon server-mini">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+            <span class="badge trans" data-ar="متوسط" data-en="Intermediate">متوسط</span>
+            <div class="server-mini"><span></span><span></span><span></span></div>
           </div>
           <div class="card-body">
-            <h3>إدارة السيرفرات</h3>
-            <p>Windows & Linux Servers وإدارة المستخدمين والخدمات والنسخ الاحتياطي بشكل عملي.</p>
-            <a class="card-link" href="#">استكشف الكورس ←</a>
+            <div class="meta"><span class="trans" data-ar="18 ساعة" data-en="18 Hours">18 ساعة</span><span>4.9 ★</span></div>
+            <h3 class="trans" data-ar="إدارة السيرفرات" data-en="Server Administration">إدارة السيرفرات</h3>
+            <p class="trans" data-ar="Windows & Linux Servers وإدارة المستخدمين والخدمات والنسخ الاحتياطي بشكل عملي." data-en="Windows and Linux server administration, services, users, and backup in a practical way.">Windows & Linux Servers وإدارة المستخدمين والخدمات والنسخ الاحتياطي بشكل عملي.</p>
+            <a class="card-link trans" href="#contact" data-ar="استكشف الكورس ←" data-en="Explore Course →">استكشف الكورس ←</a>
           </div>
         </article>
 
-        <article class="card course-3">
+        <article class="card">
           <div class="card-cover">
-            <span class="badge">متقدم</span>
-            <div class="course-icon switch-mini"></div>
+            <span class="badge trans" data-ar="متقدم" data-en="Advanced">متقدم</span>
+            <div class="switch-mini"></div>
           </div>
           <div class="card-body">
-            <h3>ضبط وإعداد السويتشات</h3>
-            <p>Cisco وMikroTik Configuration مع VLAN وRouting وSecurity وخطوات تطبيق عملية.</p>
-            <a class="card-link" href="#">استكشف الكورس ←</a>
+            <div class="meta"><span class="trans" data-ar="16 ساعة" data-en="16 Hours">16 ساعة</span><span>4.8 ★</span></div>
+            <h3 class="trans" data-ar="ضبط وإعداد السويتشات" data-en="Switch Configuration">ضبط وإعداد السويتشات</h3>
+            <p class="trans" data-ar="Cisco وMikroTik Configuration مع VLAN وRouting وSecurity وخطوات تطبيق عملية." data-en="Cisco and MikroTik configuration with VLANs, routing, security, and real practical labs.">Cisco وMikroTik Configuration مع VLAN وRouting وSecurity وخطوات تطبيق عملية.</p>
+            <a class="card-link trans" href="#contact" data-ar="استكشف الكورس ←" data-en="Explore Course →">استكشف الكورس ←</a>
           </div>
         </article>
 
-        <article class="card course-4">
+        <article class="card">
           <div class="card-cover">
-            <span class="badge">عملي</span>
-            <div class="course-icon wifi-mini"><span></span></div>
+            <span class="badge trans" data-ar="عملي" data-en="Practical">عملي</span>
+            <div class="wifi-mini"><span></span></div>
           </div>
           <div class="card-body">
-            <h3>أجهزة الشبكات والـ Wi‑Fi</h3>
-            <p>إعداد Access Points وRouters والتحكم في التغطية اللاسلكية للشبكات الاحترافية.</p>
-            <a class="card-link" href="#">استكشف الكورس ←</a>
+            <div class="meta"><span class="trans" data-ar="10 ساعات" data-en="10 Hours">10 ساعات</span><span>4.7 ★</span></div>
+            <h3 class="trans" data-ar="أنظمة الواي فاي الاحترافية" data-en="Professional Wi‑Fi Systems">أنظمة الواي فاي الاحترافية</h3>
+            <p class="trans" data-ar="إعداد Access Points وRouters والتحكم في التغطية اللاسلكية للشبكات الاحترافية." data-en="Configure access points, routers, and wireless coverage for professional environments.">إعداد Access Points وRouters والتحكم في التغطية اللاسلكية للشبكات الاحترافية.</p>
+            <a class="card-link trans" href="#contact" data-ar="استكشف الكورس ←" data-en="Explore Course →">استكشف الكورس ←</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <span class="badge trans" data-ar="أمن" data-en="Security">أمن</span>
+            <div class="security-mini"></div>
+          </div>
+          <div class="card-body">
+            <div class="meta"><span class="trans" data-ar="14 ساعة" data-en="14 Hours">14 ساعة</span><span>4.8 ★</span></div>
+            <h3 class="trans" data-ar="أمن الشبكات" data-en="Network Security">أمن الشبكات</h3>
+            <p class="trans" data-ar="Firewall، ACL، VPN، سياسات الحماية، وتأمين البنية التحتية للشبكات." data-en="Firewall, ACL, VPN, security policies, and infrastructure hardening for modern networks.">Firewall، ACL، VPN، سياسات الحماية، وتأمين البنية التحتية للشبكات.</p>
+            <a class="card-link trans" href="#contact" data-ar="استكشف الكورس ←" data-en="Explore Course →">استكشف الكورس ←</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <span class="badge trans" data-ar="MikroTik" data-en="MikroTik">MikroTik</span>
+            <div class="mikrotik-mini"></div>
+          </div>
+          <div class="card-body">
+            <div class="meta"><span class="trans" data-ar="15 ساعة" data-en="15 Hours">15 ساعة</span><span>4.9 ★</span></div>
+            <h3 class="trans" data-ar="MikroTik من الصفر للاحتراف" data-en="MikroTik from Zero to Pro">MikroTik من الصفر للاحتراف</h3>
+            <p class="trans" data-ar="واجهة RouterOS، إعداد الإنترنت، Hotspot، Queue، وRouting العملي." data-en="RouterOS basics, internet setup, hotspot, queues, and practical routing labs.">واجهة RouterOS، إعداد الإنترنت، Hotspot، Queue، وRouting العملي.</p>
+            <a class="card-link trans" href="#contact" data-ar="استكشف الكورس ←" data-en="Explore Course →">استكشف الكورس ←</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <span class="badge trans" data-ar="بنية تحتية" data-en="Infrastructure">بنية تحتية</span>
+            <div class="cabling-mini"></div>
+          </div>
+          <div class="card-body">
+            <div class="meta"><span class="trans" data-ar="8 ساعات" data-en="8 Hours">8 ساعات</span><span>4.6 ★</span></div>
+            <h3 class="trans" data-ar="الكابلات والبنية التحتية" data-en="Cabling & Infrastructure">الكابلات والبنية التحتية</h3>
+            <p class="trans" data-ar="Structured Cabling، Patch Panels، Racks، وترتيب غرف السيرفرات باحترافية." data-en="Structured cabling, patch panels, racks, and professional server room preparation.">Structured Cabling، Patch Panels، Racks، وترتيب غرف السيرفرات باحترافية.</p>
+            <a class="card-link trans" href="#contact" data-ar="استكشف الكورس ←" data-en="Explore Course →">استكشف الكورس ←</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <span class="badge trans" data-ar="Virtualization" data-en="Virtualization">Virtualization</span>
+            <div class="virtualization-mini"></div>
+          </div>
+          <div class="card-body">
+            <div class="meta"><span class="trans" data-ar="11 ساعة" data-en="11 Hours">11 ساعة</span><span>4.7 ★</span></div>
+            <h3 class="trans" data-ar="Virtualization و Hyper‑V" data-en="Virtualization & Hyper‑V">Virtualization و Hyper‑V</h3>
+            <p class="trans" data-ar="بناء لاب عملي على سيرفر واحد وتشغيل أكثر من نظام وخدمة لإدارة البنية التحتية." data-en="Build a practical lab and run multiple systems and services on one server.">بناء لاب عملي على سيرفر واحد وتشغيل أكثر من نظام وخدمة لإدارة البنية التحتية.</p>
+            <a class="card-link trans" href="#contact" data-ar="استكشف الكورس ←" data-en="Explore Course →">استكشف الكورس ←</a>
           </div>
         </article>
       </div>
 
       <div class="center-btn">
-        <a class="primary-btn" href="#">عرض جميع الكورسات</a>
-      </div>
-
-      <div class="trust-row" id="services">
-        <div class="trust"><div class="i">🏅</div><span>شهادات معتمدة</span></div>
-        <div class="trust"><div class="i">🧩</div><span>مشاريع عملية</span></div>
-        <div class="trust"><div class="i">👨‍🏫</div><span>مدربون محترفون</span></div>
-        <div class="trust"><div class="i">🔄</div><span>تحديثات مستمرة</span></div>
+        <a class="primary-btn trans" href="#contact" data-ar="عرض جميع الكورسات" data-en="View All Courses">عرض جميع الكورسات</a>
       </div>
     </div>
   </section>
 
-  <footer class="footer" id="contact">
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow trans" data-ar="خدماتنا" data-en="Our Services">خدماتنا</p>
+        <h2 class="trans" data-ar="حلول متكاملة للأجهزة والتدريب والدعم" data-en="Integrated Solutions for Hardware, Training, and Support">حلول متكاملة للأجهزة والتدريب والدعم</h2>
+        <p class="trans" data-ar="نقدم خدمات توريد وتركيب وصيانة وتدريب عملي للأفراد والشركات، مع متابعة فنية مستمرة." data-en="We provide supply, installation, maintenance, and practical training for individuals and companies with ongoing technical support.">نقدم خدمات توريد وتركيب وصيانة وتدريب عملي للأفراد والشركات، مع متابعة فنية مستمرة.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service"><div class="i">🧰</div><h3 class="trans" data-ar="توريد الأجهزة" data-en="Hardware Supply">توريد الأجهزة</h3><p class="trans" data-ar="توفير سويتشات، راوترات، Access Points، فايروول، وسيرفرات حسب احتياج المشروع." data-en="Supply switches, routers, access points, firewalls, and servers based on your project needs.">توفير سويتشات، راوترات، Access Points، فايروول، وسيرفرات حسب احتياج المشروع.</p></article>
+        <article class="service"><div class="i">🛠</div><h3 class="trans" data-ar="تركيب وإعداد" data-en="Setup & Installation">تركيب وإعداد</h3><p class="trans" data-ar="إعداد الشبكات الداخلية، Wi‑Fi، الربط بين الفروع، والأنظمة الأساسية للمكاتب والشركات." data-en="Configure LAN, Wi‑Fi, branch connectivity, and core systems for offices and businesses.">إعداد الشبكات الداخلية، Wi‑Fi، الربط بين الفروع، والأنظمة الأساسية للمكاتب والشركات.</p></article>
+        <article class="service"><div class="i">🎓</div><h3 class="trans" data-ar="تدريب عملي" data-en="Practical Training">تدريب عملي</h3><p class="trans" data-ar="كورسات فردية وجماعية في الشبكات والسيرفرات مع لابات عملية ومتابعة مباشرة." data-en="Individual and group courses in networking and servers with labs and direct follow-up.">كورسات فردية وجماعية في الشبكات والسيرفرات مع لابات عملية ومتابعة مباشرة.</p></article>
+        <article class="service"><div class="i">☎</div><h3 class="trans" data-ar="دعم وصيانة" data-en="Support & Maintenance">دعم وصيانة</h3><p class="trans" data-ar="متابعة فنية وصيانة دورية وتحسين الأداء وحل المشاكل التشغيلية بسرعة." data-en="Technical follow-up, periodic maintenance, performance optimization, and fast troubleshooting.">متابعة فنية وصيانة دورية وتحسين الأداء وحل المشاكل التشغيلية بسرعة.</p></article>
+      </div>
+
+      <div class="trust-row" style="margin-top: 28px;">
+        <article class="trust"><div class="i">🏅</div><h3 class="trans" data-ar="شهادات معتمدة" data-en="Certified Training">شهادات معتمدة</h3><p class="trans" data-ar="شهادات إتمام وتقييم عملي مع إمكانية التحقق." data-en="Completion certificates with practical evaluation and verification options.">شهادات إتمام وتقييم عملي مع إمكانية التحقق.</p></article>
+        <article class="trust"><div class="i">🧩</div><h3 class="trans" data-ar="مشاريع عملية" data-en="Hands-on Projects">مشاريع عملية</h3><p class="trans" data-ar="تطبيق مباشر على سويتشات وسيرفرات وأجهزة حقيقية." data-en="Direct practice using real switches, servers, and network devices.">تطبيق مباشر على سويتشات وسيرفرات وأجهزة حقيقية.</p></article>
+        <article class="trust"><div class="i">👨‍🏫</div><h3 class="trans" data-ar="مدربون محترفون" data-en="Expert Trainers">مدربون محترفون</h3><p class="trans" data-ar="خبرة عملية وسوقية لنقل المعلومة بشكل واضح واحترافي." data-en="Professional trainers with practical market experience and clear delivery.">خبرة عملية وسوقية لنقل المعلومة بشكل واضح واحترافي.</p></article>
+        <article class="trust"><div class="i">🔄</div><h3 class="trans" data-ar="تحديثات مستمرة" data-en="Continuous Updates">تحديثات مستمرة</h3><p class="trans" data-ar="تحديث المحتوى والكورسات والخدمات بما يناسب السوق الحالي." data-en="Updated content, services, and courses to match current market needs.">تحديث المحتوى والكورسات والخدمات بما يناسب السوق الحالي.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="contact-hero">
+          <h2 class="trans" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p class="trans" data-ar="لا تتردد في التواصل معنا إذا كان لديك استفسار بخصوص الأجهزة، الكورسات، أو خدمات الشبكات. سنرد عليك في أقرب وقت ممكن." data-en="Feel free to contact us if you have any questions about devices, courses, or networking services. We will get back to you as soon as possible.">لا تتردد في التواصل معنا إذا كان لديك استفسار بخصوص الأجهزة، الكورسات، أو خدمات الشبكات. سنرد عليك في أقرب وقت ممكن.</p>
+            <div class="contact-lines">
+              <div class="contact-line"><div class="dot">📍</div><div><strong class="trans" data-ar="شركتنا" data-en="Our Office">شركتنا</strong><br><span class="trans" data-ar="طنطا - الغربية - مصر" data-en="Tanta, Gharbia, Egypt">طنطا - الغربية - مصر</span></div></div>
+              <div class="contact-line"><div class="dot">📞</div><div>+20 100 000 0000</div></div>
+              <div class="contact-line"><div class="dot">✉</div><div>info@alfawan.com</div></div>
+              <div class="contact-line"><div class="dot">🕒</div><div class="trans" data-ar="السبت - الخميس | 10 صباحًا - 8 مساءً" data-en="Sat - Thu | 10 AM - 8 PM">السبت - الخميس | 10 صباحًا - 8 مساءً</div></div>
+            </div>
+          </div>
+
+          <form class="contact-form" onsubmit="submitForm(event)">
+            <div class="field-row">
+              <div>
+                <label class="trans" data-ar="الاسم *" data-en="Name *">الاسم *</label>
+                <input class="input" type="text" required placeholder="اكتب اسمك" data-ar-placeholder="اكتب اسمك" data-en-placeholder="Enter your name" />
+              </div>
+              <div>
+                <label class="trans" data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+                <input class="input" type="tel" placeholder="+20 100 000 0000" />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div>
+                <label class="trans" data-ar="البريد الإلكتروني *" data-en="Email *">البريد الإلكتروني *</label>
+                <input class="input" type="email" required placeholder="name@email.com" />
+              </div>
+              <div>
+                <label class="trans" data-ar="نوع الطلب" data-en="Request Type">نوع الطلب</label>
+                <select class="select">
+                  <option data-ar="استفسار عن كورس" data-en="Course Inquiry">استفسار عن كورس</option>
+                  <option data-ar="طلب أجهزة" data-en="Hardware Request">طلب أجهزة</option>
+                  <option data-ar="خدمة تركيب وصيانة" data-en="Setup / Maintenance">خدمة تركيب وصيانة</option>
+                  <option data-ar="شراكة أو تعاون" data-en="Partnership">شراكة أو تعاون</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="trans" data-ar="الشركة" data-en="Company">الشركة</label>
+              <input class="input" type="text" placeholder="اسم الشركة" data-ar-placeholder="اسم الشركة" data-en-placeholder="Company name" />
+            </div>
+
+            <div>
+              <label class="trans" data-ar="العنوان" data-en="Address">العنوان</label>
+              <input class="input" type="text" placeholder="المدينة / المنطقة" data-ar-placeholder="المدينة / المنطقة" data-en-placeholder="City / Area" />
+            </div>
+
+            <div>
+              <label class="trans" data-ar="سؤالك" data-en="Your Message">سؤالك</label>
+              <textarea class="textarea" placeholder="اكتب تفاصيل طلبك هنا" data-ar-placeholder="اكتب تفاصيل طلبك هنا" data-en-placeholder="Write your request details here"></textarea>
+            </div>
+
+            <div class="send-row">
+              <div class="send-note trans" data-ar="سيتم الرد عليك خلال وقت قصير." data-en="We will reply to you shortly.">سيتم الرد عليك خلال وقت قصير.</div>
+              <button class="send-btn trans" type="submit" data-ar="إرسال" data-en="Send">إرسال</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
     <div class="container">
       <div class="footer-brand">
         <div class="mini-mark"></div>
         <span>ALFAWAN</span>
       </div>
-      <div>alfawan.com — أجهزة شبكات، سيرفرات، وكورسات عملية.</div>
+      <div class="trans" data-ar="alfawan.com — أجهزة شبكات، سيرفرات، وكورسات عملية." data-en="alfawan.com — Network hardware, servers, and practical courses.">alfawan.com — أجهزة شبكات، سيرفرات، وكورسات عملية.</div>
     </div>
   </footer>
+
+  <script>
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = 'ar';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.body.classList.toggle('en', lang === 'en');
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      langToggle.textContent = lang === 'ar' ? 'EN' : 'AR';
+
+      document.querySelectorAll('.trans').forEach(el => {
+        const value = el.dataset[lang];
+        if (value) el.textContent = value;
+      });
+
+      document.querySelectorAll('[data-ar-placeholder]').forEach(el => {
+        el.placeholder = lang === 'ar' ? el.dataset.arPlaceholder : el.dataset.enPlaceholder;
+      });
+
+      document.querySelectorAll('option').forEach(opt => {
+        const value = lang === 'ar' ? opt.dataset.ar : opt.dataset.en;
+        if (value) opt.textContent = value;
+      });
+    }
+
+    langToggle.addEventListener('click', () => {
+      applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+    });
+
+    function submitForm(e) {
+      e.preventDefault();
+      alert(currentLang === 'ar' ? 'تم إرسال رسالتك بنجاح.' : 'Your message has been sent successfully.');
+    }
+
+    applyLanguage('ar');
+  </script>
 </body>
 </html>
