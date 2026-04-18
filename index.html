@@ -1,10 +1,1085 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <title>Alfawan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALFAWAN | أجهزة شبكات وسيرفرات</title>
+  <style>
+    :root {
+      --bg: #070b1f;
+      --bg-2: #0d1330;
+      --card: rgba(15, 22, 53, 0.82);
+      --card-light: #f7f8ff;
+      --text: #ffffff;
+      --muted: #c7cbe6;
+      --primary: #7a3cff;
+      --primary-2: #2b8cff;
+      --line: rgba(255,255,255,0.08);
+      --shadow: 0 16px 40px rgba(0,0,0,0.28);
+      --radius: 24px;
+      --container: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: linear-gradient(180deg, #eef1fb 0%, #f9faff 100%);
+      color: #111827;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero-wrap {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(122, 60, 255, 0.22), transparent 26%),
+        radial-gradient(circle at 80% 20%, rgba(43, 140, 255, 0.2), transparent 25%),
+        linear-gradient(180deg, #050816 0%, #08102a 100%);
+      color: var(--text);
+      border-bottom-left-radius: 44px;
+      border-bottom-right-radius: 44px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .top-logo {
+      text-align: center;
+      padding: 20px 0 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .brand-stack {
+      display: inline-flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 82px;
+      height: 82px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #b64cff 0%, #6a39ff 55%, #2a91ff 100%);
+      position: relative;
+      box-shadow: 0 10px 34px rgba(106, 57, 255, 0.34);
+      clip-path: polygon(22% 100%, 45% 6%, 67% 6%, 100% 100%, 75% 100%, 66% 74%, 43% 74%, 34% 100%);
+    }
+
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      left: 39%;
+      top: 48%;
+      width: 42%;
+      height: 14%;
+      background: linear-gradient(90deg, #cf7cff, #77c2ff);
+      border-radius: 999px;
+      transform: skewX(-20deg);
+      box-shadow: 0 2px 14px rgba(111, 188, 255, 0.45);
+    }
+
+    .brand-title {
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .brand-tagline {
+      margin: 0;
+      color: #d7daf3;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+
+    .nav-brand .mini-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #b64cff 0%, #6a39ff 55%, #2a91ff 100%);
+      clip-path: polygon(22% 100%, 45% 6%, 67% 6%, 100% 100%, 75% 100%, 66% 74%, 43% 74%, 34% 100%);
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .nav-brand .mini-mark::after {
+      content: "";
+      position: absolute;
+      left: 39%;
+      top: 48%;
+      width: 42%;
+      height: 14%;
+      background: linear-gradient(90deg, #cf7cff, #77c2ff);
+      border-radius: 999px;
+      transform: skewX(-20deg);
+    }
+
+    .nav-brand span {
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: #f4f6ff;
+    }
+
+    .nav-links a {
+      position: relative;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: -11px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 220px;
+      justify-content: flex-end;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: rgba(255,255,255,0.04);
+      font-size: 18px;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .ghost-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 16px;
+      padding: 15px 24px;
+      font-size: 17px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .primary-btn {
+      color: #fff;
+      background: linear-gradient(90deg, var(--primary) 0%, #6c4cff 55%, var(--primary-2) 100%);
+      box-shadow: 0 10px 26px rgba(110, 74, 255, 0.28);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .ghost-btn:hover { transform: translateY(-2px); }
+
+    .secondary-btn {
+      color: #fff;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .ghost-btn {
+      color: #fff;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 34px;
+      padding: 42px 0 18px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(42px, 5vw, 78px);
+      line-height: 1.08;
+      font-weight: 900;
+    }
+
+    .accent { color: #9b63ff; }
+
+    .hero p {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.7;
+      color: #eef0ff;
+      max-width: 650px;
+    }
+
+    .hero-copy { padding-bottom: 18px; }
+
+    .feature-icons {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+      margin: 34px 0;
+    }
+
+    .feature-icons .item {
+      min-width: 110px;
+      text-align: center;
+      color: #dadffb;
+    }
+
+    .feature-icons .circle {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 10px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      color: #b892ff;
+      background: rgba(131, 86, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .feature-icons strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 9% 10% 13% 10%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(122,60,255,0.28) 0%, rgba(43,140,255,0.16) 36%, transparent 70%);
+      filter: blur(8px);
+    }
+
+    .device-stack {
+      position: relative;
+      width: min(100%, 650px);
+      z-index: 1;
+    }
+
+    .rack {
+      position: absolute;
+      left: 55%;
+      top: 6%;
+      width: 150px;
+      height: 355px;
+      transform: translateX(-50%);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #0d122d, #101833);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .rack::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      background:
+        repeating-linear-gradient(180deg, rgba(60, 126, 255, 0.7) 0 5px, transparent 5px 22px),
+        repeating-linear-gradient(90deg, rgba(154, 101, 255, 0.12) 0 100%);
+      border-radius: 10px;
+      opacity: 0.75;
+    }
+
+    .switches {
+      position: absolute;
+      right: 15px;
+      top: 18%;
+      width: 410px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .switch {
+      height: 84px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #182343, #0e1730);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+      position: relative;
+      padding: 16px 20px;
+      overflow: hidden;
+    }
+
+    .switch::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      right: 16px;
+      width: 74px;
+      height: 16px;
+      background: linear-gradient(90deg, rgba(122,60,255,0.7), rgba(43,140,255,0.75));
+      border-radius: 99px;
+      opacity: 0.65;
+    }
+
+    .ports {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 8px;
+      margin-top: 26px;
+    }
+
+    .port {
+      height: 18px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, #222f5a, #0b1124);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    .port::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 3px;
+      background: #7ee787;
+      top: 2px;
+      left: 3px;
+      border-radius: 999px;
+      box-shadow: 8px 0 0 #65a9ff;
+      opacity: 0.9;
+    }
+
+    .router {
+      position: absolute;
+      left: 22px;
+      bottom: 30px;
+      width: 220px;
+      height: 88px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #11182d, #0a1020);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .router::before,
+    .router::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 72px;
+      bottom: 68px;
+      background: linear-gradient(180deg, #dde5ff, #7d90ff);
+      border-radius: 999px;
+    }
+
+    .router::before { right: 42px; }
+    .router::after { right: 22px; }
+
+    .router-leds {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .router-leds span {
+      width: 10px;
+      height: 10px;
+      background: #59ffa0;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(89,255,160,0.65);
+    }
+
+    .access-point {
+      position: absolute;
+      right: 95px;
+      bottom: 60px;
+      width: 165px;
+      height: 165px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #ffffff 0%, #eef2ff 65%, #dce6ff 100%);
+      box-shadow: 0 18px 36px rgba(8,14,35,0.35);
+      border: 6px solid rgba(255,255,255,0.08);
+    }
+
+    .access-point::before {
+      content: "";
+      position: absolute;
+      inset: 34px;
+      border-radius: 50%;
+      border: 4px solid rgba(72, 191, 255, 0.6);
+    }
+
+    .cables {
+      position: absolute;
+      left: 70px;
+      bottom: 55px;
+      width: 220px;
+      height: 70px;
+    }
+
+    .cables span {
+      position: absolute;
+      inset: 0;
+      border-bottom: 7px solid rgba(43,140,255,0.95);
+      border-radius: 0 0 120px 120px;
+      filter: drop-shadow(0 0 12px rgba(43,140,255,0.45));
+    }
+
+    .cables span:nth-child(2) {
+      transform: translateY(12px) scaleX(0.92);
+      border-bottom-color: rgba(146,91,255,0.95);
+    }
+
+    .cables span:nth-child(3) {
+      transform: translateY(24px) scaleX(0.84);
+      border-bottom-color: rgba(113,205,255,0.9);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      padding: 14px 0 34px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .stat .ico {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(122,60,255,0.12);
+      color: #77baff;
+      font-size: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 36px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      color: #6d55ff;
+      font-weight: 800;
+      font-size: 28px;
+      margin: 0 0 10px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 12px;
+      font-size: clamp(36px, 4vw, 60px);
+      line-height: 1.2;
+      color: #111427;
+    }
+
+    .section-title p {
+      margin: 0 auto;
+      font-size: 24px;
+      color: #5f647d;
+      max-width: 900px;
+      line-height: 1.8;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(38, 45, 89, 0.08);
+      overflow: hidden;
+      border: 1px solid rgba(16,24,40,0.06);
+    }
+
+    .card-cover {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #070b1f, #0d1640 58%, #171e66 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: linear-gradient(90deg, #8a48ff, #4f83ff);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 10px 18px rgba(116, 80, 255, 0.24);
+    }
+
+    .course-icon {
+      width: 150px;
+      height: 150px;
+      position: relative;
+    }
+
+    .course-1 .course-icon::before,
+    .course-1 .course-icon::after {
+      content: "";
+      position: absolute;
+      border-radius: 18px;
+      border: 3px solid #58a6ff;
+      box-shadow: 0 0 18px rgba(88,166,255,0.32);
+    }
+
+    .course-1 .course-icon::before {
+      inset: 18px 18px auto;
+      height: 24px;
+      background: rgba(88,166,255,0.1);
+    }
+
+    .course-1 .course-icon::after {
+      inset: 60px 10px 18px;
+      background:
+        linear-gradient(90deg, transparent 18%, rgba(130,96,255,0.45) 18% 20%, transparent 20% 49%, rgba(71,176,255,0.52) 49% 51%, transparent 51%),
+        radial-gradient(circle at 24% 24%, #7d57ff 0 7px, transparent 8px),
+        radial-gradient(circle at 76% 32%, #2b8cff 0 7px, transparent 8px),
+        radial-gradient(circle at 48% 72%, #8a55ff 0 7px, transparent 8px);
+    }
+
+    .course-2 .server-mini,
+    .course-3 .switch-mini,
+    .course-4 .wifi-mini {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+
+    .server-mini {
+      width: 120px;
+      height: 120px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .server-mini span {
+      border-radius: 14px;
+      background: linear-gradient(180deg, #161f42, #0c1430);
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.2);
+    }
+
+    .server-mini span::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      top: 18px;
+      bottom: 18px;
+      background: repeating-linear-gradient(90deg, rgba(61,149,255,0.8) 0 8px, transparent 8px 18px);
+      border-radius: 10px;
+      opacity: 0.65;
+    }
+
+    .switch-mini {
+      width: 150px;
+      height: 72px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #1b264d, #0e1730);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.24);
+    }
+
+    .switch-mini::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 14px;
+      height: 18px;
+      background:
+        repeating-linear-gradient(90deg, #1e2a53 0 11px, #0a1227 11px 16px);
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .wifi-mini {
+      width: 150px;
+      height: 150px;
+    }
+
+    .wifi-mini::before,
+    .wifi-mini::after {
+      content: "";
+      position: absolute;
+      border: 5px solid transparent;
+      border-top-color: #55c8ff;
+      border-radius: 50%;
+      transform: rotate(180deg);
+      left: 50%;
+      translate: -50% 0;
+    }
+
+    .wifi-mini::before {
+      width: 110px;
+      height: 110px;
+      top: 14px;
+      box-shadow: 0 -12px 24px rgba(85, 200, 255, 0.15);
+    }
+
+    .wifi-mini::after {
+      width: 72px;
+      height: 72px;
+      top: 33px;
+    }
+
+    .wifi-mini span {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      translate: -50% 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8d5bff, #2b8cff);
+      box-shadow: 0 0 18px rgba(104,129,255,0.5);
+    }
+
+    .card-body {
+      padding: 24px 22px 26px;
+    }
+
+    .card-body h3 {
+      margin: 0 0 12px;
+      font-size: 38px;
+      line-height: 1.25;
+      color: #14182b;
+    }
+
+    .card-body p {
+      margin: 0 0 16px;
+      color: #5c627c;
+      font-size: 22px;
+      line-height: 1.7;
+      min-height: 92px;
+    }
+
+    .card-link {
+      color: #5d43ff;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .center-btn {
+      text-align: center;
+      margin-top: 34px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 46px;
+    }
+
+    .trust {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(14, 23, 48, 0.08);
+      border-radius: 18px;
+      padding: 20px;
+      color: #283052;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .trust .i {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #6649ff;
+      background: rgba(102,73,255,0.08);
+      font-size: 22px;
+    }
+
+    .footer {
+      background: #0a1020;
+      color: #c7cbe6;
+      padding: 28px 0;
+      margin-top: 34px;
+    }
+
+    .footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .footer-brand .mini-mark { width: 34px; height: 34px; border-radius: 12px; }
+
+    @media (max-width: 1200px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { text-align: center; }
+      .hero p { margin-inline: auto; }
+      .feature-icons, .cta-row { justify-content: center; }
+      .stats,
+      .courses-grid,
+      .trust-row { grid-template-columns: repeat(2, 1fr); }
+      .hero-visual { min-height: 540px; }
+    }
+
+    @media (max-width: 860px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-brand,
+      .nav-actions { justify-content: center; min-width: 0; }
+      .nav-links { gap: 18px; }
+      .brand-title { font-size: 34px; }
+      .hero h1 { font-size: 40px; }
+      .hero p,
+      .section-title p,
+      .card-body p,
+      .trust { font-size: 18px; }
+      .stats,
+      .courses-grid,
+      .trust-row { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 480px; }
+      .switches { width: 290px; top: 25%; }
+      .switch { height: 68px; }
+      .ports { grid-template-columns: repeat(6, 1fr); }
+      .rack { width: 110px; height: 270px; left: 65%; }
+      .access-point { width: 120px; height: 120px; right: 55px; }
+      .router { width: 170px; height: 72px; }
+      .cables { width: 150px; left: 40px; }
+      .card-body h3 { font-size: 28px; }
+      .card-link { font-size: 18px; }
+    }
+  </style>
 </head>
-<body style="text-align:center; font-family:sans-serif; margin-top:100px;">
-  <h1>Welcome to Alfawan 🚀</h1>
-  <p>This is your Dev by:Eng Mohamed Ayman</p>
+<body>
+  <div class="hero-wrap">
+    <div class="container top-logo">
+      <div class="brand-stack">
+        <div class="logo-mark"></div>
+        <h1 class="brand-title">ALFAWAN</h1>
+        <p class="brand-tagline">LEARN • BUILD • ACHIEVE</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <nav class="navbar">
+        <div class="nav-brand">
+          <div class="mini-mark"></div>
+          <span>ALFAWAN</span>
+        </div>
+
+        <div class="nav-links">
+          <a class="active" href="#home">الرئيسية</a>
+          <a href="#devices">الأجهزة</a>
+          <a href="#courses">الكورسات</a>
+          <a href="#services">الخدمات</a>
+          <a href="#contact">تواصل معنا</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="icon-btn" href="#" aria-label="بحث">⌕</a>
+          <a class="icon-btn" href="#" aria-label="سلة">🛒</a>
+          <a class="primary-btn" href="#contact">ابدأ الآن</a>
+        </div>
+      </nav>
+
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <h1>أجهزة شبكات <br><span class="accent">وسيرفرات احترافية</span></h1>
+          <p>كل ما تحتاجه لبناء وتطوير شبكتك بأفضل الجودة والأداء، مع كورسات عملية تساعدك على الاحتراف.</p>
+
+          <div class="feature-icons">
+            <div class="item">
+              <div class="circle">🛡</div>
+              <strong>ضمان</strong>
+              <div>موثوق</div>
+            </div>
+            <div class="item">
+              <div class="circle">🚚</div>
+              <strong>شحن سريع</strong>
+              <div>لكافة المناطق</div>
+            </div>
+            <div class="item">
+              <div class="circle">⚙</div>
+              <strong>دعم فني</strong>
+              <div>على مدار الساعة</div>
+            </div>
+            <div class="item">
+              <div class="circle">✔</div>
+              <strong>جودة</strong>
+              <div>معتمدة</div>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="primary-btn" href="#devices">تصفح الأجهزة ←</a>
+            <a class="ghost-btn" href="#contact">تواصل معنا</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="devices">
+          <div class="device-stack">
+            <div class="rack"></div>
+
+            <div class="switches">
+              <div class="switch">
+                <div class="ports">
+                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
+                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
+                </div>
+              </div>
+              <div class="switch">
+                <div class="ports">
+                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
+                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
+                </div>
+              </div>
+              <div class="switch">
+                <div class="ports">
+                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
+                  <span class="port"></span><span class="port"></span><span class="port"></span><span class="port"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="access-point"></div>
+
+            <div class="router">
+              <div class="router-leds">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <div class="cables">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="ico">🖧</div>
+          <div>
+            <strong>5000+</strong>
+            <div>جهاز متوفر</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="ico">🗄</div>
+          <div>
+            <strong>1000+</strong>
+            <div>عميل راضي</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="ico">⭐</div>
+          <div>
+            <strong>5</strong>
+            <div>سنوات من الخبرة</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="ico">🕒</div>
+          <div>
+            <strong>24/7</strong>
+            <div>دعم فني</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="courses">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">طور مهاراتك</p>
+        <h2>كورسات متخصصة في الشبكات والسيرفرات</h2>
+        <p>تعلم من الصفر واحتراف إدارة الشبكات والسيرفرات بخطوات عملية مبسطة، مع محتوى عربي واضح مناسب لسوق العمل.</p>
+      </div>
+
+      <div class="courses-grid">
+        <article class="card course-1">
+          <div class="card-cover">
+            <span class="badge">مبتدئ</span>
+            <div class="course-icon"></div>
+          </div>
+          <div class="card-body">
+            <h3>أساسيات الشبكات</h3>
+            <p>تعلم مفاهيم IP وSubnetting وتصميم الشبكات من الصفر مع أمثلة عملية وسهلة.</p>
+            <a class="card-link" href="#">استكشف الكورس ←</a>
+          </div>
+        </article>
+
+        <article class="card course-2">
+          <div class="card-cover">
+            <span class="badge">متوسط</span>
+            <div class="course-icon server-mini">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>إدارة السيرفرات</h3>
+            <p>Windows & Linux Servers وإدارة المستخدمين والخدمات والنسخ الاحتياطي بشكل عملي.</p>
+            <a class="card-link" href="#">استكشف الكورس ←</a>
+          </div>
+        </article>
+
+        <article class="card course-3">
+          <div class="card-cover">
+            <span class="badge">متقدم</span>
+            <div class="course-icon switch-mini"></div>
+          </div>
+          <div class="card-body">
+            <h3>ضبط وإعداد السويتشات</h3>
+            <p>Cisco وMikroTik Configuration مع VLAN وRouting وSecurity وخطوات تطبيق عملية.</p>
+            <a class="card-link" href="#">استكشف الكورس ←</a>
+          </div>
+        </article>
+
+        <article class="card course-4">
+          <div class="card-cover">
+            <span class="badge">عملي</span>
+            <div class="course-icon wifi-mini"><span></span></div>
+          </div>
+          <div class="card-body">
+            <h3>أجهزة الشبكات والـ Wi‑Fi</h3>
+            <p>إعداد Access Points وRouters والتحكم في التغطية اللاسلكية للشبكات الاحترافية.</p>
+            <a class="card-link" href="#">استكشف الكورس ←</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="center-btn">
+        <a class="primary-btn" href="#">عرض جميع الكورسات</a>
+      </div>
+
+      <div class="trust-row" id="services">
+        <div class="trust"><div class="i">🏅</div><span>شهادات معتمدة</span></div>
+        <div class="trust"><div class="i">🧩</div><span>مشاريع عملية</span></div>
+        <div class="trust"><div class="i">👨‍🏫</div><span>مدربون محترفون</span></div>
+        <div class="trust"><div class="i">🔄</div><span>تحديثات مستمرة</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-brand">
+        <div class="mini-mark"></div>
+        <span>ALFAWAN</span>
+      </div>
+      <div>alfawan.com — أجهزة شبكات، سيرفرات، وكورسات عملية.</div>
+    </div>
+  </footer>
 </body>
 </html>
